@@ -1,0 +1,143 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1149px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media only screen and (min-width: 1150px) and (max-width: 1349px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media only screen and (min-width: 1350px) and (max-width: 1499px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1700px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Assistant;
+  font-size: 2rem;
+  font-weight: 400;
+  background-color: #f7f7f7;
+  color: #000000;
+  direction: ltr;
+}
+
+.container {
+  width: 120rem;
+  margin: 0 auto;
+}
+
+.wordle {
+  padding: 10rem 0;
+}
+
+.wordle .board {
+  display: -ms-grid;
+  display: grid;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 5rem;
+  background: darkgrey;
+  padding: 4rem;
+}
+
+.wordle .board .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 1rem;
+  padding: 0;
+}
+
+.wordle .board .row li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid black;
+  height: 10rem;
+  width: 10rem;
+  font-size: 8rem;
+}
+
+.wordle .keyboard {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  width: fit-content;
+  border-radius: 27px;
+  background: darkgrey;
+  padding: 2rem;
+}
+
+.wordle .keyboard .letters-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  padding: 0;
+}
+
+.wordle .keyboard .letters-row li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 1rem;
+  background: grey;
+  height: 10rem;
+  width: 10rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.wordle .keyboard .letters-row li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+/*# sourceMappingURL=stylesheet.css.map */

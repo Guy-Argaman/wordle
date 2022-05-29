@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+    @media only screen and (min-width: 1024px) and (max-width: 1149px) {
+        font-size: 6px;
+    }
+    @media only screen and (min-width: 1150px) and (max-width: 1349px) {
+        font-size: 7px;
+    }
+    @media only screen and (min-width: 1350px) and (max-width: 1499px) {
+        font-size: 8px;
+    }
+    @media only screen and (min-width: 1500px) and (max-width: 1700px) {
+        font-size: 9px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Assistant;
+    font-size: 2rem;
+    font-weight: 400;
+    background-color: #f7f7f7;
+    color: #000000;
+    direction: ltr;
+}
+
+.container {
+    width: 120rem;
+    margin: 0 auto;
+}
+
+.wordle {
+    padding: 10rem 0;
+    .board {
+        display: grid;
+        width: fit-content;
+        margin: 0 auto 5rem;
+        background: darkgrey;
+        padding: 4rem;
+        .row {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            padding: 0;
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid black;
+                height: 10rem;
+                width: 10rem;
+                font-size: 8rem;
+            }
+        }
+    }
+    .keyboard {
+        width: fit-content;
+        margin: auto;
+        width: fit-content;
+        border-radius: 27px;
+        background: darkgrey;
+        padding: 2rem;
+        .letters-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0;
+            li {
+                display: flex;
+                border: 1px solid black;
+                border-radius: 1rem;
+                background: grey;
+                height: 10rem;
+                width: 10rem;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                a {
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
