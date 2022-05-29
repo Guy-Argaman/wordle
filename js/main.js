@@ -41,21 +41,24 @@ $(document).ready(function () {
             }
             if (e.key === $(lettersEl[i]).text().toLowerCase()) {
                 $(lettersEl[i]).trigger('click');
-                $(lettersEl[i]).parent().css('background-color', 'saddlebrown');
-                $(document).on('keyup', function () {
-                    $(lettersEl[i]).parent().css('background-color', '');
-                });
+                quickColor($(lettersEl[i]).parent());
             }
         }
-        e.keyCode === 8 ? ($('.erase').trigger('click')) : '';
-        e.keyCode === 13 ? ($('.submit').trigger('click')) : '';
+        if (e.keyCode === 8) {
+            ($('.erase').trigger('click'));
+            quickColor($('.erase'));
+        }
+        if (e.keyCode === 13) {
+            ($('.submit').trigger('click'));
+            quickColor($('.submit'));
+        }
     });
     function checkWin() {
         console.log('checking win');
         for (let i = 0; i < userInput.length; i++) {
             if (userInput[i] === currentWord[i]) {
-                console.log(userInput.indexOf(userInput[i]));
-                console.log(currentWord.indexOf(currentWord[i]));
+                // console.log(userInput.indexOf(userInput[i]));
+                // console.log(currentWord.indexOf(currentWord[i]));
                 $(colorEl(userInput[i])).addClass('correct-index-letter');
             }
         }
@@ -97,7 +100,12 @@ $(document).ready(function () {
             }
         }
     }
-
+    function quickColor(el) {
+        $(el).css('background-color', 'saddlebrown');
+        $(document).on('keyup', function () {
+            $(el).css('background-color', '');
+        });
+    }
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
