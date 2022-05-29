@@ -41,7 +41,7 @@ body {
         display: grid;
         width: fit-content;
         margin: 0 auto 5rem;
-        background: darkgrey;
+        background: #e6e5e5;
         padding: 4rem;
         .row {
             display: flex;
@@ -82,17 +82,29 @@ body {
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                font-size: 5rem;
+                transition: background-color 0.2s;
                 a {
                     text-decoration: none;
                     color: white;
                     font-weight: 700;
                 }
+                &:hover {
+                    background: saddlebrown;
+                }
             }
-            .erase {
-                padding: 0.5rem;
+            .erase,
+            .submit {
+                padding: 1rem;
                 img {
                     width: 100%;
+                    height: 100%;
                 }
+            }
+        }
+        .bottom {
+            li {
+                width: 100%;
             }
         }
     }
@@ -100,4 +112,10 @@ body {
 
 .correct-index-letter {
     background: green;
+}
+.correct-letter {
+    background: orange;
+}
+.incorrect-letter {
+    background: grey;
 }

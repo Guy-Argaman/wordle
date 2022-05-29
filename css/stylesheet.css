@@ -59,7 +59,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto 5rem;
-  background: darkgrey;
+  background: #e6e5e5;
   padding: 4rem;
 }
 
@@ -133,6 +133,9 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  font-size: 5rem;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
 
 .wordle .keyboard .letters-row li a {
@@ -141,15 +144,34 @@ body {
   font-weight: 700;
 }
 
-.wordle .keyboard .letters-row .erase {
-  padding: 0.5rem;
+.wordle .keyboard .letters-row li:hover {
+  background: saddlebrown;
 }
 
-.wordle .keyboard .letters-row .erase img {
+.wordle .keyboard .letters-row .erase,
+.wordle .keyboard .letters-row .submit {
+  padding: 1rem;
+}
+
+.wordle .keyboard .letters-row .erase img,
+.wordle .keyboard .letters-row .submit img {
+  width: 100%;
+  height: 100%;
+}
+
+.wordle .keyboard .bottom li {
   width: 100%;
 }
 
 .correct-index-letter {
   background: green;
+}
+
+.correct-letter {
+  background: orange;
+}
+
+.incorrect-letter {
+  background: grey;
 }
 /*# sourceMappingURL=stylesheet.css.map */

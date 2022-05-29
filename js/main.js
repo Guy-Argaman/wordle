@@ -57,34 +57,13 @@ $(document).ready(function () {
         console.log('checking win');
         for (let i = 0; i < userInput.length; i++) {
             if (userInput[i] === currentWord[i]) {
-                // console.log(userInput.indexOf(userInput[i]));
-                // console.log(currentWord.indexOf(currentWord[i]));
                 $(colorEl(userInput[i])).addClass('correct-index-letter');
+                console.log('entered');
+            } else {
+                $(colorEl(userInput[i])).addClass('incorrect-letter');
+                console.log('entered two');
             }
         }
-        // if (currentWord.indexOf(currentWord[i]) === userInput.indexOf(userInput[i])) {
-        // else {
-        // $(colorEl(userInput[i])).addClass('correct-letter');
-        // }
-        // console.log(currentWord);
-        // for (let i = 0; i < userInput.length; i++) {
-        //     for (let j = 0; j < currentWord.length; j++) {
-        //         if (userInput[i] === currentWord[j]) {
-        //             if (currentWord.indexOf(currentWord[j]) === userInput.indexOf(userInput[i])) {
-        //                 $(colorEl(userInput[i])).addClass('correct-index-letter');
-        //                 break;
-        //             } else {
-        //                 $(colorEl(userInput[i])).addClass('correct-letter');
-        //                 break;
-        //             }
-        //         }
-        //         else {
-        //             console.log('test');
-        //             $(colorEl(userInput[i])).addClass('incorrect-letter');
-        //             break;
-        //         }
-        //     }
-        // }
         if (userInput.length === 5) {
             let current = $('.current');
             current.removeClass('current');
