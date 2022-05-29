@@ -91,6 +91,11 @@ body {
   font-size: 8rem;
 }
 
+.wordle .board .row .erase img {
+  width: 100%;
+  height: 100%;
+}
+
 .wordle .keyboard {
   width: -webkit-fit-content;
   width: -moz-fit-content;
