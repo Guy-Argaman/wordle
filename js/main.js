@@ -2,6 +2,7 @@ $(document).ready(function () {
     let words = ['PASTE', 'WASTE', 'PESTY'];
     // let currentWord = words[getRandomInt(0, words.length - 1)];
     let currentWord = words[0];
+    let gameOver = false;
     let boardTiles = [$('.row li')];
     let userInput = '';
     let filledTiles = [];
@@ -45,25 +46,32 @@ $(document).ready(function () {
             }
         }
         if (e.keyCode === 8) {
-            ($('.erase').trigger('click'));
+            $('.erase').trigger('click');
             quickColor($('.erase'));
         }
         if (e.keyCode === 13) {
-            ($('.submit').trigger('click'));
+            $('.submit').trigger('click');
             quickColor($('.submit'));
         }
     });
+    function checkInput() {
+        return userInput === currentWord;
+    }
     function checkWin() {
-        console.log('checking win');
-        for (let i = 0; i < userInput.length; i++) {
-            if (userInput[i] === currentWord[i]) {
-                $(colorEl(userInput[i])).addClass('correct-index-letter');
-                console.log('entered');
-            } else {
-                $(colorEl(userInput[i])).addClass('incorrect-letter');
-                console.log('entered two');
+        checkInput() ? $('.current li').addClass('correct-index-letter') : gameOver = true;
+        userInput.split('').forEach((char, i) => {
+            if (currentWord.charAt(i) === char) {
+                $(colorEl(i)).addClass('correct-index-letter');
+                if ($(colorEl(i)).hasClass('correct-index-letter')) {
+                    console.log(char);
+                }
+            } else if (currentWord.includes(char)) {
+                $(colorEl(i)).addClass('correct-letter');
             }
-        }
+            else {
+                $(colorEl(i)).addClass('incorrect-letter');
+            }
+        });
         if (userInput.length === 5) {
             let current = $('.current');
             current.removeClass('current');
@@ -72,12 +80,8 @@ $(document).ready(function () {
             filledTiles = [];
         }
     }
-    function colorEl(el) {
-        for (let element of $('.current li')) {
-            if ($(element).text() === el) {
-                return element;
-            }
-        }
+    function colorEl(index) {
+        return $('.current li')[index];
     }
     function quickColor(el) {
         $(el).css('background-color', 'saddlebrown');
