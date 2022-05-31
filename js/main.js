@@ -8,7 +8,7 @@ $(document).ready(function () {
     let filledTiles = [];
     let lettersEl = $('.letters-row li a');
     $('.letters-row li').on('click', function (e) {
-        if ($(this).hasClass('submit') || $(this).hasClass('erase')) {
+        if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver) {
             return;
         }
         $(this).text();
@@ -26,11 +26,11 @@ $(document).ready(function () {
             }
         }
     });
-    $('.submit').on('click', function (e) {
-        if (userInput.length === 5) { checkWin() };
+    $('.submit').on('click', function () {
+        if (userInput.length === 5 && !gameOver) { checkWin() };
     });
-    $('.erase').on('click', function (e) {
-        if (filledTiles[filledTiles.length - 1] === undefined) return;
+    $('.erase').on('click', function () {
+        if (filledTiles[filledTiles.length - 1] === undefined || gameOver) return;
         userInput = userInput.slice(0, -1);
         filledTiles[filledTiles.length - 1].innerText = '';
         filledTiles.pop();
@@ -57,22 +57,34 @@ $(document).ready(function () {
     function checkInput() {
         return userInput === currentWord;
     }
+
     function checkWin() {
-        checkInput() ? $('.current li').addClass('correct-index-letter') : gameOver = true;
+        if (checkInput()) {
+            $('.current li').addClass('green');
+            gameOver = true;
+        }
+        const elements = [];
+        userInput.split('').forEach(function (x, i) {
+            elements[x] = (elements[x] || 0) + 1;
+        });
         userInput.split('').forEach((char, i) => {
-            if (currentWord.charAt(i) === char) {
-                $(colorEl(i)).addClass('correct-index-letter');
-                if ($(colorEl(i)).hasClass('correct-index-letter')) {
-                    console.log(char);
+            if (currentWord[i] === char) {
+                $(getEl(i)).addClass('green');
+            }
+            else if (currentWord.includes(char)) {
+                $(getEl(i)).addClass('orange');
+                console.log(elements[char], currentWord[i].length);
+                if (elements[char] > currentWord[i].length) {
+                    $(getEl(i)).addClass('grey');
+                    // $(getEl(elements[char])).addClass('orange');
+                    // console.log($(getEl(currentWord[0])));
                 }
-            } else if (currentWord.includes(char)) {
-                $(colorEl(i)).addClass('correct-letter');
             }
             else {
-                $(colorEl(i)).addClass('incorrect-letter');
+                $(getEl(i)).addClass('grey');
             }
         });
-        if (userInput.length === 5) {
+        if (userInput.length === 5 && !gameOver) {
             let current = $('.current');
             current.removeClass('current');
             current.next().addClass('current');
@@ -80,7 +92,23 @@ $(document).ready(function () {
             filledTiles = [];
         }
     }
-    function colorEl(index) {
+    // if (letters[char] === elements[char]) {
+    // $(getEl(elements[char])).addClass('orange');
+    // }
+    // console.log(currentWord.indexOf(currentWord[i]));
+    // console.log(currentWord[i]);
+    // console.log(letters[char], elements[char]);
+    // if (letters[char] < elements[char] && elements.keys() === char && letters.keys() === char) {
+    //     console.log('amin');
+    //     console.log(elements[char], char);
+    //     console.log($(getEl(elements[char])));
+    //     $(getEl(elements[char])).addClass('green');
+    // }
+    // if (currentWord[char] < elements[`index-${char}-${j++}`]) {
+    // console.log('amin');
+    // $(getEl(elements[char])).addClass('green');
+    // }
+    function getEl(index) {
         return $('.current li')[index];
     }
     function quickColor(el) {

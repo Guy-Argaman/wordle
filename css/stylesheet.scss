@@ -110,12 +110,16 @@ body {
     }
 }
 
-.correct-index-letter {
+.green {
     background: green;
 }
-.correct-letter {
+.orange {
     background: orange;
 }
-.incorrect-letter {
+.grey {
     background: grey;
+}
+
+.flip {
+    animation: flip 0.5s;
 }

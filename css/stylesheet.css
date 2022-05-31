@@ -163,15 +163,20 @@ body {
   width: 100%;
 }
 
-.correct-index-letter {
+.green {
   background: green;
 }
 
-.correct-letter {
+.orange {
   background: orange;
 }
 
-.incorrect-letter {
+.grey {
   background: grey;
+}
+
+.flip {
+  -webkit-animation: flip 0.5s;
+          animation: flip 0.5s;
 }
 /*# sourceMappingURL=stylesheet.css.map */
