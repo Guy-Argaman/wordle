@@ -81,7 +81,7 @@ $(document).ready(function () {
                 $(getEl(i)).addClass('orange');
                 letterCounter[char]--;
             }
-            else if (char != '#') {
+            else if (char !== '#') {
                 $(getEl(i)).addClass('grey');
             }
         });
