@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    let words = ['PASTE', 'WASTE', 'PESTY'];
+    let words = ['TASTE', 'WASTE', 'PESTY'];
     // let currentWord = words[getRandomInt(0, words.length - 1)];
-    let currentWord = words[0];
+    let wordle = words[0];
     let gameOver = false;
     let boardTiles = [$('.row li')];
     let userInput = '';
@@ -54,8 +54,9 @@ $(document).ready(function () {
             quickColor($('.submit'));
         }
     });
+
     function checkInput() {
-        return userInput === currentWord;
+        return userInput === wordle;
     }
 
     function checkWin() {
@@ -63,28 +64,32 @@ $(document).ready(function () {
             $('.current li').addClass('green');
             gameOver = true;
         }
-        const elements = [];
-        userInput.split('').forEach(function (x, i) {
-            elements[x] = (elements[x] || 0) + 1;
+        userInput_arr = Array.from(userInput);
+        letterCounter = {};
+        wordle.split('').forEach((char) => {
+            letterCounter[char] = (letterCounter[char] || 0) + 1;
         });
-        userInput.split('').forEach((char, i) => {
-            if (currentWord[i] === char) {
+        userInput_arr.forEach((char, i) => {
+            if (char === wordle[i]) {
                 $(getEl(i)).addClass('green');
+                letterCounter[char]--;
+                userInput_arr[i] = '#';
             }
-            else if (currentWord.includes(char)) {
+        });
+        userInput_arr.forEach((char, i) => {
+            if (letterCounter[char] && letterCounter[char] > 0) {
                 $(getEl(i)).addClass('orange');
-                console.log(elements[char], currentWord[i].length);
-                if (elements[char] > currentWord[i].length) {
-                    $(getEl(i)).addClass('grey');
-                    // $(getEl(elements[char])).addClass('orange');
-                    // console.log($(getEl(currentWord[0])));
-                }
+                letterCounter[char]--;
             }
-            else {
+            else if (char !== '#') {
                 $(getEl(i)).addClass('grey');
             }
         });
         if (userInput.length === 5 && !gameOver) {
+            if ($('.row').last().hasClass('current')) {
+                gameOver = true;
+                console.log('Game is Over');
+            }
             let current = $('.current');
             current.removeClass('current');
             current.next().addClass('current');
@@ -92,22 +97,7 @@ $(document).ready(function () {
             filledTiles = [];
         }
     }
-    // if (letters[char] === elements[char]) {
-    // $(getEl(elements[char])).addClass('orange');
-    // }
-    // console.log(currentWord.indexOf(currentWord[i]));
-    // console.log(currentWord[i]);
-    // console.log(letters[char], elements[char]);
-    // if (letters[char] < elements[char] && elements.keys() === char && letters.keys() === char) {
-    //     console.log('amin');
-    //     console.log(elements[char], char);
-    //     console.log($(getEl(elements[char])));
-    //     $(getEl(elements[char])).addClass('green');
-    // }
-    // if (currentWord[char] < elements[`index-${char}-${j++}`]) {
-    // console.log('amin');
-    // $(getEl(elements[char])).addClass('green');
-    // }
+
     function getEl(index) {
         return $('.current li')[index];
     }
