@@ -1,8 +1,9 @@
 $(document).ready(function () {
     let words = ['TASTE', 'WASTE', 'PESTY'];
-    // let currentWord = words[getRandomInt(0, words.length - 1)];
     let wordle = words[0];
+    // let wordle = words[getRandomInt(0, words.length - 1)];
     let gameOver = false;
+    let winStatus = '';
     let boardTiles = [$('.row li')];
     let userInput = '';
     let filledTiles = [];
@@ -56,12 +57,15 @@ $(document).ready(function () {
     });
 
     function checkInput() {
+        winStatus = 'You win! Congratulations!'
         return userInput === wordle;
     }
 
     function checkWin() {
         if (checkInput()) {
             $('.current li').addClass('green');
+            popUp();
+            checkKeyboard();
             gameOver = true;
         }
         userInput_arr = Array.from(userInput);
@@ -85,11 +89,19 @@ $(document).ready(function () {
                 $(getEl(i)).addClass('grey');
             }
         });
+        userInput_arr.forEach((char, i) => {
+            $(getEl(i)).delay(500 * i).queue(function (next) {
+                $(this).removeClass('default').addClass('flip');
+                next();
+            });
+        });
         if (userInput.length === 5 && !gameOver) {
             if ($('.row').last().hasClass('current')) {
                 gameOver = true;
-                console.log('Game is Over');
+                winStatus = 'You lost!';
+                popUp();
             }
+            checkKeyboard()
             let current = $('.current');
             current.removeClass('current');
             current.next().addClass('current');
@@ -97,10 +109,40 @@ $(document).ready(function () {
             filledTiles = [];
         }
     }
+    function popUp() {
+        $('.pop-up').slideDown();
+        $('.pop-up--status').text(winStatus);
+        $('.pop-up--wordle').text(`The word was ${wordle}`);
+    }
+
+    function checkKeyboard() {
+        let id = $('.current li');
+        id.text().split('').forEach((char, i) => {
+            let keyboardID = $(getKeyboardEl(char));
+            if (checkInput()) {
+                keyboardID.removeClass().addClass('green');
+                return;
+            }
+            if (keyboardID.is('.orange', '.green')) {
+                keyboardID.removeClass('orange');
+            } else if (keyboardID.is('.grey', '.green')) {
+                keyboardID.removeClass('green');
+            }
+            else if (keyboardID.is('.green')) {
+                return;
+            }
+            keyboardID.addClass(id[i].classList[1]);
+        });
+    }
 
     function getEl(index) {
         return $('.current li')[index];
     }
+
+    function getKeyboardEl(char) {
+        return $(`#${char}`);
+    }
+
     function quickColor(el) {
         $(el).css('background-color', 'saddlebrown');
         $(document).on('keyup', function () {
