@@ -117,22 +117,25 @@ $(document).ready(function () {
 
     function checkKeyboard() {
         let id = $('.current li');
-        id.text().split('').forEach((char, i) => {
-            let keyboardID = $(getKeyboardEl(char));
-            if (checkInput()) {
-                keyboardID.removeClass().addClass('green');
-                return;
-            }
-            if (keyboardID.is('.orange', '.green')) {
-                keyboardID.removeClass('orange');
-            } else if (keyboardID.is('.grey', '.green')) {
-                keyboardID.removeClass('green');
-            }
-            else if (keyboardID.is('.green')) {
-                return;
-            }
-            keyboardID.addClass(id[i].classList[1]);
-        });
+        setTimeout(() => {
+
+            id.text().split('').forEach((char, i) => {
+                let keyboardID = $(getKeyboardEl(char));
+                if (checkInput()) {
+                    keyboardID.removeClass().addClass('green');
+                    return;
+                }
+                if (keyboardID.is('.orange', '.green')) {
+                    keyboardID.removeClass('orange');
+                } else if (keyboardID.is('.grey', '.green')) {
+                    keyboardID.removeClass('green');
+                }
+                else if (keyboardID.is('.green')) {
+                    return;
+                }
+                keyboardID.addClass(id[i].classList[0]);
+            });
+        }, 2500);
     }
 
     function getEl(index) {
