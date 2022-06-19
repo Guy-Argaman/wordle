@@ -30,10 +30,8 @@ $(document).ready(function () {
         return arr.filter(function (elem) { return elem == str }).length > 0;
     }
     $('.submit').on('click', function () {
-        if (userInput.length === 5 && !gameOver) {
-            if (checkWord(words, userInput)) {
-                checkWin();
-            }
+        if (userInput.length === 5 && !gameOver && checkWord(words, userInput)) {
+            checkWin();
         }
     });
     $('.erase').on('click', function () {
