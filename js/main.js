@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    let words = ['TASTE', 'WASTE', 'PESTY'];
-    let wordle = words[0];
-    // let wordle = words[getRandomInt(0, words.length - 1)];
+    let wordle = words[getRandomInt(0, words.length - 1)].toUpperCase();
+    console.log(wordle);
     let gameOver = false;
     let winStatus = '';
     let boardTiles = [$('.row li')];
@@ -27,8 +26,15 @@ $(document).ready(function () {
             }
         }
     });
+    function checkWord(arr, str) {
+        return arr.filter(function (elem) { return elem == str }).length > 0;
+    }
     $('.submit').on('click', function () {
-        if (userInput.length === 5 && !gameOver) { checkWin() };
+        if (userInput.length === 5 && !gameOver) {
+            if (checkWord(words, userInput)) {
+                checkWin();
+            }
+        }
     });
     $('.erase').on('click', function () {
         if (filledTiles[filledTiles.length - 1] === undefined || gameOver) return;

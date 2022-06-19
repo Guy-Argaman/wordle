@@ -235,4 +235,8 @@ body {
 .pop-up--title, .pop-up--status {
   text-align: center;
 }
+
+.pop-up-title {
+  font-size: 2.2rem;
+}
 /*# sourceMappingURL=stylesheet.css.map */
