@@ -219,24 +219,64 @@ body {
 }
 
 .pop-up {
-  position: absolute;
-  left: 45%;
-  top: 0;
-  border: 1px solid black;
-  background: limegreen;
+  display: none;
+  border: 1px solid green;
+  background-color: #fff;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  border-radius: 0.5em;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
-  border-radius: 5px;
-  padding: 0.5rem 2rem;
 }
 
-.pop-up--title, .pop-up--status {
+.pop-up--status, .pop-up--wordle {
   text-align: center;
+  font-family: "VT323";
+  padding: 0 0 1rem 0;
 }
 
-.pop-up-title {
-  font-size: 2.2rem;
+.pop-up--status {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.pop-up--wordle {
+  font-size: 2.5rem;
+  padding: 0 0 2rem 0;
+}
+
+.pop-up--wordle strong {
+  color: green;
+  font-weight: 900;
+}
+
+.pop-up--button a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 50px;
+  -webkit-transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 18px;
+  color: #fff;
+  background-color: #1ed760;
+  cursor: pointer;
+}
+
+.pop-up--button a:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  background-color: #21e065;
 }
 /*# sourceMappingURL=stylesheet.css.map */

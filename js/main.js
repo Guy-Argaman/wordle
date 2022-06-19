@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let wordle = words[getRandomInt(0, words.length - 1)].toUpperCase();
+    wordle = 'TASTE';
     console.log(wordle);
     let gameOver = false;
     let winStatus = '';
@@ -26,6 +27,7 @@ $(document).ready(function () {
             }
         }
     });
+
     function checkWord(arr, str) {
         return arr.filter(function (elem) { return elem == str }).length > 0;
     }
@@ -68,8 +70,9 @@ $(document).ready(function () {
     function checkWin() {
         if (checkInput()) {
             $('.current li').addClass('green');
-            popUp();
             checkKeyboard();
+            setTimeout(function () { $('.board, .keyboard').fadeOut() }, 3000);
+            setTimeout(popUp, 3500);
             gameOver = true;
         }
         userInput_arr = Array.from(userInput);
@@ -102,7 +105,8 @@ $(document).ready(function () {
         if (userInput.length === 5 && !gameOver) {
             if ($('.row').last().hasClass('current')) {
                 gameOver = true;
-                winStatus = 'You lost!';
+                winStatus = 'You lose!';
+                $('.pop-up').css('position', 'absolute');
                 popUp();
             }
             checkKeyboard()
@@ -114,15 +118,15 @@ $(document).ready(function () {
         }
     }
     function popUp() {
-        $('.pop-up').slideDown();
+        $('.pop-up').fadeIn();
         $('.pop-up--status').text(winStatus);
-        $('.pop-up--wordle').text(`The word was ${wordle}`);
+        $('.pop-up--wordle span').text('The word was ');
+        $('.pop-up--wordle strong').text(wordle);
     }
 
     function checkKeyboard() {
         let id = $('.current li');
         setTimeout(() => {
-
             id.text().split('').forEach((char, i) => {
                 let keyboardID = $(getKeyboardEl(char));
                 if (checkInput()) {
