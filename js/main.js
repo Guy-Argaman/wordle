@@ -3,7 +3,6 @@ $(document).ready(function () {
     console.log(wordle);
     let gameOver = false;
     let winStatus = '';
-    let boardTiles = [$('.row li')];
     let userInput = '';
     let filledTiles = [];
     let lettersEl = $('.letters-row li a');
@@ -13,11 +12,11 @@ $(document).ready(function () {
         }
         $(this).text();
         userInput += $(this).text();
-        let current = $('.current li');
-        for (let i = 0; i < current.length; i++) {
-            if ($(current[i]).text() === '') {
-                $(current[i]).text($(this).text());
-                filledTiles.push($(current[i])[0]);
+        let currentRow = $('.current li');
+        for (let i = 0; i < currentRow.length; i++) {
+            if ($(currentRow[i]).text() === '') {
+                $(currentRow[i]).text($(this).text());
+                filledTiles.push($(currentRow[i])[0]);
                 return;
             }
         }
