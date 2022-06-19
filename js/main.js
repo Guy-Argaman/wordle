@@ -1,7 +1,5 @@
 $(document).ready(function () {
     let wordle = words[getRandomInt(0, words.length - 1)].toUpperCase();
-    wordle = 'TASTE';
-    console.log(wordle);
     let gameOver = false;
     let winStatus = '';
     let boardTiles = [$('.row li')];
