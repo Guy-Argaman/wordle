@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let wordle = words[getRandomInt(0, words.length - 1)].toUpperCase();
+    console.log(wordle);
     let gameOver = false;
     let winStatus = '';
     let boardTiles = [$('.row li')];
@@ -7,21 +8,17 @@ $(document).ready(function () {
     let filledTiles = [];
     let lettersEl = $('.letters-row li a');
     $('.letters-row li').on('click', function (e) {
-        if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver) {
+        if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver || userInput.length === 5) {
             return;
         }
         $(this).text();
-        if (userInput.length === 5) {
-            return;
-        }
         userInput += $(this).text();
-        for (let i = 0; i < boardTiles.length; i++) {
-            for (let j = 0; j < boardTiles[i].length; j++) {
-                if ($(boardTiles[i][j]).text() === '') {
-                    $(boardTiles[i][j]).text($(this).text());
-                    filledTiles.push($(boardTiles[i][j])[0]);
-                    return;
-                }
+        let current = $('.current li');
+        for (let i = 0; i < current.length; i++) {
+            if ($(current[i]).text() === '') {
+                $(current[i]).text($(this).text());
+                filledTiles.push($(current[i])[0]);
+                return;
             }
         }
     });
