@@ -27,6 +27,10 @@ $(document).ready(function () {
     $('.submit').on('click', function () {
         if (userInput.length === 5 && !gameOver && checkWord(words, userInput)) {
             checkWin();
+        } else {
+            if (!$('.incorrect-pop-up').is(':visible')) {
+                incorrectPopUp();
+            }
         }
     });
     $('.erase').on('click', function () {
@@ -40,7 +44,7 @@ $(document).ready(function () {
             if ($(lettersEl[i]).text() === '') {
                 continue;
             }
-            e.key === $(lettersEl[i]).text().toLowerCase() ? quickColor($(lettersEl[i]).trigger('click')) : '';
+            e.key === $(lettersEl[i]).text().toLowerCase() ? quickColor($(lettersEl[i]).parent().trigger('click')) : '';
         }
         e.keyCode === 8 ? quickColor($('.erase').trigger('click')) : '';
         e.keyCode === 13 ? quickColor($('.submit').trigger('click')) : '';
@@ -108,6 +112,12 @@ $(document).ready(function () {
         $('.pop-up--wordle strong').text(wordle);
     }
 
+    function incorrectPopUp() {
+        userInput ? $('.incorrect-pop-up').text(`${userInput} is not a valid word.`) : $('.incorrect-pop-up').text('Please enter a word');
+        $('.incorrect-pop-up').fadeIn('fast');
+        $('.incorrect-pop-up').fadeOut(3000)
+    }
+
     function checkKeyboard() {
         let id = $('.current li');
         setTimeout(() => {
@@ -144,6 +154,7 @@ $(document).ready(function () {
             $(el).css('background-color', '');
         });
     }
+
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);

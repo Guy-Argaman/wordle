@@ -19,6 +19,12 @@ html {
     }
 }
 
+@mixin anim($name, $dur, $iterate) {
+    animation-name: $name;
+    animation-duration: $dur;
+    animation-iteration-count: $iterate;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -31,13 +37,17 @@ body {
 }
 
 .container {
+    position: relative;
     width: 120rem;
     margin: 0 auto;
 }
-
 .wordle {
     .board {
-        display: grid;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         width: fit-content;
         margin: 0 auto 1rem;
         background: #e6e5e5;
@@ -125,27 +135,9 @@ body {
 .flip {
     animation: flip 0.5s;
 }
-@keyframes flip {
-    0% {
-        transform: rotateY(0deg);
-    }
-    50% {
-        transform: rotateY(90deg);
-    }
-    100% {
-        transform: rotateY(0deg);
-    }
-}
-.container {
-    position: relative;
-}
-@mixin anim($name, $dur, $iterate) {
-    animation-name: $name;
-    animation-duration: $dur;
-    animation-iteration-count: $iterate;
-}
 
-.pop-up {
+.pop-up,
+.incorrect-pop-up {
     display: none;
     border: 1px solid green;
     background-color: #fff;
@@ -192,5 +184,36 @@ body {
             transform: scale(1.04);
             background-color: #21e065;
         }
+    }
+}
+
+.incorrect-pop-up {
+    position: absolute;
+    margin: 0;
+    top: -4rem;
+    animation: down 0.5s ease-in-out forwards;
+    &--message {
+        font-size: 2.5rem;
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(90deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes down {
+    0% {
+        top: -4rem;
+    }
+    100% {
+        top: 14.2rem;
     }
 }
