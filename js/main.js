@@ -113,7 +113,7 @@ $(document).ready(function () {
     }
 
     function incorrectPopUp() {
-        userInput ? $('.incorrect-pop-up').text(`${userInput} is not a valid word.`) : $('.incorrect-pop-up').text('Please enter a word');
+        userInput ? $('.incorrect-pop-up').text(`${userInput} is not a valid word`) : $('.incorrect-pop-up').text('Please enter a word');
         $('.incorrect-pop-up').fadeIn('fast');
         $('.incorrect-pop-up').fadeOut(3000)
     }

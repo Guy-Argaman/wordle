@@ -196,8 +196,7 @@ body {
 .pop-up,
 .incorrect-pop-up {
   display: none;
-  border: 1px solid green;
-  background-color: #fff;
+  background-color: #389c47;
   padding: 0.5rem 2rem;
   text-align: center;
   border-radius: 0.5em;
@@ -229,8 +228,13 @@ body {
 
 .pop-up--wordle strong,
 .incorrect-pop-up--wordle strong {
-  color: green;
+  color: #4af026;
+  background-color: #0c6abd73;
+  padding: 0 1rem;
   font-weight: 900;
+  font-size: 3.5rem;
+  border-radius: 12px;
+  border: 1px solid black;
 }
 
 .pop-up--button a,
@@ -265,6 +269,8 @@ body {
 
 .incorrect-pop-up {
   position: absolute;
+  color: #d8000c;
+  background-color: #ffbaba;
   margin: 0;
   top: -4rem;
   -webkit-animation: down 0.5s ease-in-out forwards;
