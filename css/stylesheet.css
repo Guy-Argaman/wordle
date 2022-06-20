@@ -48,10 +48,6 @@ body {
   margin: 0 auto;
 }
 
-.wordle {
-  padding: 5rem 0;
-}
-
 .wordle .board {
   display: -ms-grid;
   display: grid;
@@ -228,7 +224,7 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 0 auto;
+  margin: 10% auto;
 }
 
 .pop-up--status, .pop-up--wordle {

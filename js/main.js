@@ -1,6 +1,5 @@
 $(document).ready(function () {
     let wordle = words[getRandomInt(0, words.length - 1)].toUpperCase();
-    console.log(wordle);
     let gameOver = false;
     let winStatus = '';
     let userInput = '';
@@ -41,19 +40,10 @@ $(document).ready(function () {
             if ($(lettersEl[i]).text() === '') {
                 continue;
             }
-            if (e.key === $(lettersEl[i]).text().toLowerCase()) {
-                $(lettersEl[i]).trigger('click');
-                quickColor($(lettersEl[i]).parent());
-            }
+            e.key === $(lettersEl[i]).text().toLowerCase() ? quickColor($(lettersEl[i]).trigger('click')) : '';
         }
-        if (e.keyCode === 8) {
-            $('.erase').trigger('click');
-            quickColor($('.erase'));
-        }
-        if (e.keyCode === 13) {
-            $('.submit').trigger('click');
-            quickColor($('.submit'));
-        }
+        e.keyCode === 8 ? quickColor($('.erase').trigger('click')) : '';
+        e.keyCode === 13 ? quickColor($('.submit').trigger('click')) : '';
     });
 
     function checkInput() {
