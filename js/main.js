@@ -1,15 +1,13 @@
 $(document).ready(function () {
     let wordle = words[getRandomInt(0, words.length - 1)].toUpperCase();
     let gameOver = false;
-    let winStatus = '';
+    let status = '';
     let userInput = '';
     let filledTiles = [];
-    let lettersEl = $('.letters-row li a');
     $('.letters-row li').on('click', function (e) {
         if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver || userInput.length === 5) {
             return;
         }
-        $(this).text();
         userInput += $(this).text();
         let currentRow = $('.current li');
         for (let i = 0; i < currentRow.length; i++) {
@@ -20,6 +18,7 @@ $(document).ready(function () {
             }
         }
     });
+    console.log(wordle);
 
     function checkWord(arr, str) {
         return arr.filter(function (elem) { return elem == str }).length > 0;
@@ -40,6 +39,7 @@ $(document).ready(function () {
         filledTiles.pop();
     });
     $(document).on('keydown', function (e) {
+        let lettersEl = $('.letters-row li a');
         for (let i = 0; i < lettersEl.length; i++) {
             if ($(lettersEl[i]).text() === '') {
                 continue;
@@ -51,7 +51,7 @@ $(document).ready(function () {
     });
 
     function checkInput() {
-        winStatus = 'You win! Congratulations!'
+        status = 'You win! Congratulations!'
         return userInput === wordle;
     }
 
@@ -93,7 +93,7 @@ $(document).ready(function () {
         if (userInput.length === 5 && !gameOver) {
             if ($('.row').last().hasClass('current')) {
                 gameOver = true;
-                winStatus = 'You lose!';
+                status = 'You lose!';
                 $('.pop-up').css('position', 'absolute');
                 popUp();
             }
@@ -105,9 +105,10 @@ $(document).ready(function () {
             filledTiles = [];
         }
     }
+
     function popUp() {
         $('.pop-up').fadeIn();
-        $('.pop-up--status').text(winStatus);
+        $('.pop-up--status').text(status);
         $('.pop-up--wordle span').text('The word was ');
         $('.pop-up--wordle strong').text(wordle);
     }
