@@ -18,7 +18,6 @@ $(document).ready(function () {
             }
         }
     });
-    console.log(wordle);
 
     function checkWord(arr, str) {
         return arr.filter(function (elem) { return elem == str }).length > 0;
@@ -51,7 +50,7 @@ $(document).ready(function () {
     });
 
     function checkInput() {
-        status = 'You win! Congratulations!'
+        status = 'You win! Congratulations!';
         return userInput === wordle;
     }
 
