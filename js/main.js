@@ -31,6 +31,7 @@ $(document).ready(function () {
         revealBoard();
         setDifficulty($(this));
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
+        console.log(wordle);
     });
     let gameOver = false;
     let status = '';
@@ -112,11 +113,31 @@ $(document).ready(function () {
         status = 'You win! Congratulations!';
         return userInput === wordle;
     }
-
+    function checkResults() {
+        let mat = '';
+        let count = 1;
+        for (let i = 0; i < $('.row li').length; i++) {
+            $('.row li')[i].classList.contains('green') ? mat += '✅' : '';
+            $('.row li')[i].classList.contains('orange') ? mat += '🟧' : '';
+            $('.row li')[i].classList.contains('grey') ? mat += '⬜️' : '';
+            if (i % 5 === 0 && i !== 0) {
+                let list = document.createElement('li');
+                let text = document.createTextNode(`${count++}.`);
+                console.log(text);
+                list.innerText = text;
+                console.log(list);
+                $('.pop-up--copy-result ul').append(list);
+                list.innerText = mat;
+                mat += `\n`;
+                mat = '';
+            }
+        }
+    }
     function checkWin() {
         if (checkInput()) {
             $('.current li').addClass('green');
             checkKeyboard();
+            checkResults();
             setTimeout(function () { $('.board, .keyboard').fadeOut() }, 3000);
             setTimeout(popUp, 3500);
             gameOver = true;
@@ -153,6 +174,7 @@ $(document).ready(function () {
                 gameOver = true;
                 status = 'You lose!';
                 $('.pop-up').css('position', 'absolute');
+                checkResults();
                 popUp();
             }
             checkKeyboard();
@@ -215,11 +237,16 @@ $(document).ready(function () {
     }
 
     $('.copy-link').on('click', function () {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($($('#link a')).text()).select();
-        document.execCommand("copy");
-        $('.copy-link').text('Copied!').css('background-color', 'grey');
+        var $temp = $('<input>');
+        $('body').append($temp);
+        if ($(this).parent().hasClass('pop-up')) {
+            $temp.val($('.pop-up--copy-result ul li').text()).select();
+            $('.pop-up .copy-link').text('Copied!').css('background-color', 'grey');
+        } else {
+            $temp.val($('#link a').text()).select();
+            $('.challenge .copy-link').text('Copied!').css('background-color', 'grey');
+        }
+        document.execCommand('copy');
         $temp.remove();
     });
 

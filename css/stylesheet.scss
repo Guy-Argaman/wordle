@@ -41,6 +41,23 @@ body {
     width: 120rem;
     margin: 0 auto;
 }
+button {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 50px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: 0.3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 10px 18px;
+    color: #fff;
+    background-color: #1ed760;
+    cursor: pointer;
+}
 
 .difficulty {
     display: flex;
@@ -193,23 +210,6 @@ body {
     .buttons-wrapper {
         padding: 2rem 0 0 0;
     }
-    button {
-        display: inline-block;
-        text-decoration: none;
-        font-size: 14px;
-        line-height: 1;
-        border-radius: 50px;
-        transition-property: background-color, border-color, color, box-shadow, filter;
-        transition-duration: 0.3s;
-        border: 1px solid transparent;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: 700;
-        padding: 10px 18px;
-        color: #fff;
-        background-color: #1ed760;
-        cursor: pointer;
-    }
     .link-wrapper {
         display: none;
     }
@@ -236,6 +236,15 @@ body {
 }
 .pop-up {
     left: -10rem;
+    &--copy-result {
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+        }
+    }
 }
 
 .pop-up,
