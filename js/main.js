@@ -1,11 +1,34 @@
 $(document).ready(function () {
     let wordle = '';
     $('.board, .keyboard').hide();
-    $('.difficulty li').on('click', function () {
-        $(this).toggleClass('selected').css('pointer-events', 'none');
-        $('.difficulty').fadeOut(400).promise().done(function () {
+    $('.generate-link').on('click', function () {
+        $('.copy-link').text('Copy to Clipboard').css('background-color', '');
+        let chosenWord = $('#word').val().toUpperCase();
+        let currentURL = window.location.href;
+        if (chosenWord.length >= 3 && chosenWord.length <= 5) {
+            $('#link a').text(currentURL + '?=' + btoa(chosenWord));
+            $('.link-wrapper').fadeIn();
+        } else {
+            $('.challenge label').css('color', 'red');
+            setTimeout(function () { $('.challenge label').css('color', '') }, 500);
+        }
+    });
+    if (window.location.href.includes('?=')) {
+        let query = window.location.search;
+        let index = query.indexOf('=');
+        wordle = atob(query.substring(index + 1, query.length));
+        setDifficulty(0, wordle.length);
+        fiveLetterWords.push(wordle);
+        revealBoard();
+    }
+    function revealBoard() {
+        $('.difficulty, .challenge').fadeOut(400).promise().done(function () {
             $('.board, .keyboard').fadeIn(400);
         });
+    }
+    $('.difficulty li').on('click', function () {
+        $(this).toggleClass('selected').css('pointer-events', 'none');
+        revealBoard();
         setDifficulty($(this));
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
     });
@@ -28,7 +51,13 @@ $(document).ready(function () {
         }
     });
 
-    function setDifficulty(clickedEl) {
+    function setDifficulty(clickedEl, length) {
+        if (length) {
+            setBoard(length);
+            length === 3 ? fiveLetterWords = threeLetterWords : '';
+            length === 4 ? fiveLetterWords = fourLetterWords : '';
+            return;
+        }
         let num = 5;
         if (clickedEl.text().includes('THREE')) {
             num = 3;
@@ -39,6 +68,7 @@ $(document).ready(function () {
         }
         setBoard(num);
     }
+
     function setBoard(num) {
         for (let j = 0; j <= 6; j++) {
             for (let i = 0; i < num; i++) {
@@ -183,6 +213,15 @@ $(document).ready(function () {
             $(el).css('background-color', '');
         });
     }
+
+    $('.copy-link').on('click', function () {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($($('#link a')).text()).select();
+        document.execCommand("copy");
+        $('.copy-link').text('Copied!').css('background-color', 'grey');
+        $temp.remove();
+    });
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);

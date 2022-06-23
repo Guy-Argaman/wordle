@@ -89,9 +89,51 @@ body {
   transition: background-color 0.5s;
 }
 
+.difficulty ul li:hover {
+  background: green;
+}
+
 .difficulty ul li a {
   color: black;
   text-decoration: none;
+}
+
+.wordle .type span {
+  display: block;
+}
+
+.wordle .type {
+  height: 100%;
+  margin: 50px auto;
+  text-align: center;
+  color: #f5c4b6;
+  line-height: 0.85;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight: bold;
+}
+
+.wordle .type span:nth-child(1) {
+  font-size: 100px;
+}
+
+.wordle .type span:nth-child(2) {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-size: 70px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 5px 0 0 #f94f6a, -5px 0 0 #f94f6a, 0 5px 0 #f94f6a, 0 -5px 0 #f94f6a, 4px 4px #f94f6a, -4px -4px 0 #f94f6a, 4px -4px 0 #f94f6a, -4px 4px 0 #f94f6a;
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  color: #fff;
+  margin-top: -5px;
+}
+
+.wordle .type span:nth-child(3) {
+  font-size: 100px;
+  margin-top: -32px;
 }
 
 .wordle .board {
@@ -214,6 +256,49 @@ body {
 
 .wordle .keyboard .bottom li {
   width: 100%;
+}
+
+.challenge {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.challenge label {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.challenge .buttons-wrapper {
+  padding: 2rem 0 0 0;
+}
+
+.challenge button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 50px;
+  -webkit-transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px 18px;
+  color: #fff;
+  background-color: #1ed760;
+  cursor: pointer;
+}
+
+.challenge .link-wrapper {
+  display: none;
 }
 
 .green {

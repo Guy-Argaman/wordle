@@ -18,7 +18,12 @@
                     <div class="pop-up--button"><a href=".">Restart Game</a></div>
                 </div>
                 <div class="difficulty">
-                    <h1>Choose Your Difficulty!</h1>
+                    <div class="type">
+                        <span>Welcome</span>
+                        <span>To</span>
+                        <span>Wordle</span>
+                    </div>
+                    <h1>Choose Your Difficulty</h1>
                     <ul>
                         <li><a href="#">THREE LETTER WORDS</a></li>
                         <li><a href="#">FOUR LETTER WORDS</a></li>
@@ -78,6 +83,27 @@
                         <li class="submit"><img src="./icons/enter.svg"></li>
                     </ul>
                 </div>
+            </div>
+        </section>
+        <section class="challenge">
+            <h1 style="color:green;">
+                Challenge Your Friends!
+            </h1>
+            <div class="inputs">
+                <label for="text">Enter A Word That Contains 3 or 5 Letters</label>
+                <input type="text" name="s" id="word">
+            </div>
+            <div class="buttons-wrapper">
+                <button class="generate-link">
+                    click here
+                </button>
+            </div>
+            <div class="link-wrapper">
+                <p id="link" style="color: green; font-size: 24px; font-weight: bold;"><a></a>
+                </p>
+                <button class="copy-link">
+                    Copy to Clipboard
+                </button>
             </div>
         </section>
         <script src="./js/words.js"></script>
