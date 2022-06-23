@@ -1,11 +1,20 @@
 $(document).ready(function () {
-    let wordle = words[getRandomInt(0, words.length - 1)].toUpperCase();
+    let wordle = '';
+    $('.board, .keyboard').hide();
+    $('.difficulty li').on('click', function () {
+        $(this).toggleClass('selected').css('pointer-events', 'none');
+        $('.difficulty').fadeOut(400).promise().done(function () {
+            $('.board, .keyboard').fadeIn(400);
+        });
+        setDifficulty($(this));
+        wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
+    });
     let gameOver = false;
     let status = '';
     let userInput = '';
     let filledTiles = [];
     $('.letters-row li').on('click', function (e) {
-        if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver || userInput.length === 5) {
+        if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver || userInput.length === $('.current li').length) {
             return;
         }
         userInput += $(this).text();
@@ -19,11 +28,31 @@ $(document).ready(function () {
         }
     });
 
+    function setDifficulty(clickedEl) {
+        let num = 5;
+        if (clickedEl.text().includes('THREE')) {
+            num = 3;
+            fiveLetterWords = threeLetterWords;
+        } else if (clickedEl.text().includes('FOUR')) {
+            num = 4;
+            fiveLetterWords = fourLetterWords;
+        }
+        setBoard(num);
+    }
+    function setBoard(num) {
+        for (let j = 0; j <= 6; j++) {
+            for (let i = 0; i < num; i++) {
+                let newEl = '<li class="default"><a href="#"></a></li>';
+                $(`.board-row-${j}`).append(newEl);
+            }
+        }
+    }
+
     function checkWord(arr, str) {
         return arr.filter(function (elem) { return elem == str }).length > 0;
     }
     $('.submit').on('click', function () {
-        if (userInput.length === 5 && !gameOver && checkWord(words, userInput)) {
+        if (userInput.length === $('.current li').length && !gameOver && checkWord(fiveLetterWords, userInput)) {
             checkWin();
         } else {
             if (!$('.incorrect-pop-up').is(':visible')) {
@@ -89,14 +118,14 @@ $(document).ready(function () {
                 next();
             });
         });
-        if (userInput.length === 5 && !gameOver) {
+        if (userInput.length === $('.current li').length && !gameOver) {
             if ($('.row').last().hasClass('current')) {
                 gameOver = true;
                 status = 'You lose!';
                 $('.pop-up').css('position', 'absolute');
                 popUp();
             }
-            checkKeyboard()
+            checkKeyboard();
             let current = $('.current');
             current.removeClass('current');
             current.next().addClass('current');
@@ -115,7 +144,7 @@ $(document).ready(function () {
     function incorrectPopUp() {
         userInput ? $('.incorrect-pop-up').text(`${userInput} is not a valid word`) : $('.incorrect-pop-up').text('Please enter a word');
         $('.incorrect-pop-up').fadeIn('fast');
-        $('.incorrect-pop-up').fadeOut(3000)
+        $('.incorrect-pop-up').fadeOut(3000);
     }
 
     function checkKeyboard() {
