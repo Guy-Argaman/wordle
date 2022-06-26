@@ -31,7 +31,9 @@ $(document).ready(function () {
         revealBoard();
         setDifficulty($(this));
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
+        console.log(wordle);
     });
+    let sound = new Audio('./sound/wow.mp3');
     let gameOver = false;
     let reveal = false;
     let userInput = '';
@@ -186,7 +188,12 @@ $(document).ready(function () {
             $('.pop-up').fadeIn('fast');
             $('.pop-up--wordle span').text('The word was ');
             $('.pop-up--wordle strong').text(wordle);
-        }, 3600)
+            if ($('.pop-up--status').text().includes('win')) {
+                sound.play();
+                const jsConfetti = new JSConfetti()
+                jsConfetti.addConfetti();
+            }
+        }, 3600);
     }
 
     function incorrectPopUp() {
