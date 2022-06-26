@@ -31,10 +31,10 @@ $(document).ready(function () {
         revealBoard();
         setDifficulty($(this));
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
+        console.log(wordle);
     });
     let gameOver = false;
     let reveal = false;
-    let status = '';
     let userInput = '';
     let filledTiles = [];
     $('.letters-row li').on('click', function (e) {
@@ -111,7 +111,6 @@ $(document).ready(function () {
     });
 
     function checkInput() {
-        status = 'You win! Congratulations!';
         return userInput === wordle;
     }
     function checkResults() {
@@ -124,7 +123,7 @@ $(document).ready(function () {
             if ((i + 1) % wordle.length === 0 && str) {
                 let list = document.createElement('li');
                 $('.pop-up--copy-result ul').append(list);
-                list.append(`${count++}.` + str + '\r\n');
+                list.append(`${count++}.` + str + '\r');
                 str = '';
             }
         }
@@ -169,7 +168,7 @@ $(document).ready(function () {
         if (userInput.length === $('.current li').length && !gameOver) {
             if ($('.row').last().hasClass('current')) {
                 gameOver = true;
-                status = 'You lose!';
+                $('.pop-up--status').text('You lose!');
                 $('.pop-up').css('position', 'absolute');
                 checkResults();
                 popUp();
@@ -185,11 +184,10 @@ $(document).ready(function () {
 
     function popUp() {
         setTimeout(function () {
-            $('.pop-up').fadeIn();
-            $('.pop-up--status').text(status);
+            $('.pop-up').fadeIn('fast');
             $('.pop-up--wordle span').text('The word was ');
             $('.pop-up--wordle strong').text(wordle);
-        }, 3500)
+        }, 3600)
     }
 
     function incorrectPopUp() {
@@ -218,7 +216,7 @@ $(document).ready(function () {
                 keyboardID.addClass(id[i].classList[0]);
             });
             reveal = false;
-        }, 2500);
+        }, wordle.length * 500);
     }
 
     function getEl(index) {
