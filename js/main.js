@@ -34,6 +34,7 @@ $(document).ready(function () {
         console.log(wordle);
     });
     let gameOver = false;
+    let reveal = false;
     let status = '';
     let userInput = '';
     let filledTiles = [];
@@ -98,6 +99,7 @@ $(document).ready(function () {
         filledTiles.pop();
     });
     $(document).on('keydown', function (e) {
+        if (reveal) { return; }
         let lettersEl = $('.letters-row li a');
         for (let i = 0; i < lettersEl.length; i++) {
             if ($(lettersEl[i]).text() === '') {
@@ -114,22 +116,17 @@ $(document).ready(function () {
         return userInput === wordle;
     }
     function checkResults() {
-        let mat = '';
+        let str = '';
         let count = 1;
         for (let i = 0; i < $('.row li').length; i++) {
-            $('.row li')[i].classList.contains('green') ? mat += '✅' : '';
-            $('.row li')[i].classList.contains('orange') ? mat += '🟧' : '';
-            $('.row li')[i].classList.contains('grey') ? mat += '⬜️' : '';
-            if (i % 5 === 0 && i !== 0) {
+            $('.row li')[i].classList.contains('green') ? str += '✅' : '';
+            $('.row li')[i].classList.contains('orange') ? str += '🟧' : '';
+            $('.row li')[i].classList.contains('grey') ? str += '⬜️' : '';
+            if ((i + 1) % wordle.length === 0 && str) {
                 let list = document.createElement('li');
-                let text = document.createTextNode(`${count++}.`);
-                console.log(text);
-                list.innerText = text;
-                console.log(list);
                 $('.pop-up--copy-result ul').append(list);
-                list.innerText = mat;
-                mat += `\n`;
-                mat = '';
+                list.append(`${count++}.` + str);
+                str = '';
             }
         }
     }
@@ -164,6 +161,7 @@ $(document).ready(function () {
             }
         });
         userInput_arr.forEach((char, i) => {
+            reveal = true;
             $(getEl(i)).delay(500 * i).queue(function (next) {
                 $(this).removeClass('default').addClass('flip');
                 next();
@@ -213,11 +211,12 @@ $(document).ready(function () {
                 } else if (keyboardID.is('.grey', '.green')) {
                     keyboardID.removeClass('green');
                 }
-                else if (keyboardID.is('.green')) {
+                else if (keyboardID.is('.green') || keyboardID.is('.orange')) {
                     return;
                 }
                 keyboardID.addClass(id[i].classList[0]);
             });
+            reveal = false;
         }, 2500);
     }
 

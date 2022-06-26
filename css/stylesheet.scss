@@ -238,11 +238,12 @@ button {
     left: -10rem;
     &--copy-result {
         ul {
-            padding: 0;
+            padding: 2rem 0;
             margin: 0;
         }
         li {
             list-style: none;
+            font-weight: 900;
         }
     }
 }
