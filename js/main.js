@@ -124,7 +124,7 @@ $(document).ready(function () {
             if ((i + 1) % wordle.length === 0 && str) {
                 let list = document.createElement('li');
                 $('.pop-up--copy-result ul').append(list);
-                list.append(`${count++}.` + str);
+                list.append(`${count++}.` + str + '\r\n');
                 str = '';
             }
         }
@@ -135,7 +135,7 @@ $(document).ready(function () {
             checkKeyboard();
             checkResults();
             setTimeout(function () { $('.board, .keyboard').fadeOut() }, 3000);
-            setTimeout(popUp, 3500);
+            popUp();
             gameOver = true;
         }
         userInput_arr = Array.from(userInput);
@@ -184,10 +184,12 @@ $(document).ready(function () {
     }
 
     function popUp() {
-        $('.pop-up').fadeIn();
-        $('.pop-up--status').text(status);
-        $('.pop-up--wordle span').text('The word was ');
-        $('.pop-up--wordle strong').text(wordle);
+        setTimeout(function () {
+            $('.pop-up').fadeIn();
+            $('.pop-up--status').text(status);
+            $('.pop-up--wordle span').text('The word was ');
+            $('.pop-up--wordle strong').text(wordle);
+        }, 3500)
     }
 
     function incorrectPopUp() {
@@ -235,7 +237,7 @@ $(document).ready(function () {
     }
 
     $('.copy-link').on('click', function () {
-        var $temp = $('<input>');
+        var $temp = $('<TEXTAREA>');
         $('body').append($temp);
         if ($(this).parent().hasClass('pop-up')) {
             $temp.val($('.pop-up--copy-result ul li').text()).select();
