@@ -31,9 +31,8 @@ $(document).ready(function () {
         revealBoard();
         setDifficulty($(this));
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
-        console.log(wordle);
     });
-    let sound = new Audio('./sound/wow.mp3');
+    let sound = new Audio('./sound/wow.wav');
     let gameOver = false;
     let reveal = false;
     let userInput = '';
