@@ -22,7 +22,7 @@ $(document).ready(function () {
         revealBoard();
     }
     function revealBoard() {
-        $('.difficulty, .challenge').hide().promise().done(function () {
+        $('.difficulty, .challenge').fadeOut(400).promise().done(function () {
             $('.board, .keyboard').fadeIn(400);
         });
     }
