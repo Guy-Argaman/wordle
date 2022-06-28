@@ -214,6 +214,12 @@ $(document).ready(function () {
                 if (keyboardID.is('.green')) {
                     return;
                 }
+                if (keyboardID.is('.orange') && id[i].classList[0] === 'green') {
+                    keyboardID.removeClass().addClass('green');
+                    return;
+                } else if (keyboardID.is('.orange')) {
+                    return;
+                }
                 keyboardID.removeClass().addClass(id[i].classList[0]);
             });
             reveal = false;

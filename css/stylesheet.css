@@ -144,7 +144,7 @@ button {
   font-size: 70px;
   position: relative;
   z-index: 1;
-  text-shadow: 5px 0 0 #f94f6a, -5px 0 0 #f94f6a, 0 5px 0 #f94f6a, 0 -5px 0 #f94f6a, 4px 4px #f94f6a, -4px -4px 0 #f94f6a, 4px -4px 0 #f94f6a, -4px 4px 0 #f94f6a;
+  text-shadow: 5px 0 0 #f94f6a, -5px 0 0 #f94f6a, 0 5px 0 #f94f6a, 0 -5px 0 #f94f6a, 4px 4px #f94f6a, -4px -4px 0 #f94f6a, 4px -4px 0 #f94f6a, -4px 4px 0 #f94f6a;
   -webkit-transform: rotate(-3deg);
           transform: rotate(-3deg);
   -webkit-transform-origin: 0 0;
