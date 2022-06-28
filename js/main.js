@@ -33,6 +33,7 @@ $(document).ready(function () {
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
     });
     let sound = new Audio('./sound/wow.wav');
+    let soundLose = new Audio('./sound/lose.mp3');
     let gameOver = false;
     let reveal = false;
     let userInput = '';
@@ -172,6 +173,7 @@ $(document).ready(function () {
                 $('.pop-up--status').text('You lose!');
                 $('.pop-up').css('position', 'absolute');
                 checkResults();
+                soundLose.play();
                 popUp();
             }
             checkKeyboard();
