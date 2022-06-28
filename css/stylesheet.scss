@@ -140,14 +140,15 @@ button {
             flex-direction: row;
             gap: 1rem;
             padding: 0;
+            margin: 1rem 0;
             li {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border: 1px solid black;
-                height: 10rem;
-                width: 10rem;
-                font-size: 8rem;
+                height: 7rem;
+                width: 7rem;
+                font-size: 6rem;
             }
         }
     }
@@ -156,7 +157,7 @@ button {
         width: fit-content;
         border-radius: 27px;
         background: darkgrey;
-        padding: 2rem;
+        padding: 1rem 2rem;
         .letters-row {
             display: flex;
             flex-direction: row;
@@ -164,21 +165,23 @@ button {
             gap: 1rem;
             padding: 0;
             li {
-                display: flex;
                 border: 1px solid black;
                 border-radius: 1rem;
                 background: #f7f7f700;
-                height: 7rem;
-                width: 10rem;
-                align-items: center;
-                justify-content: center;
+                height: 7.5rem;
+                width: 7.5rem;
+                list-style: none;
                 cursor: pointer;
-                font-size: 5rem;
+                font-size: 5.5rem;
                 transition: background-color 0.2s;
                 a {
+                    display: block;
+                    text-align: center;
                     text-decoration: none;
                     color: white;
                     font-weight: 700;
+                    height: 100%;
+                    width: 100%;
                 }
                 &:hover {
                     background: saddlebrown;
@@ -334,6 +337,6 @@ button {
         top: -4rem;
     }
     100% {
-        top: 28.2rem;
+        top: 27rem;
     }
 }
