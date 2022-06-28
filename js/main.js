@@ -22,7 +22,7 @@ $(document).ready(function () {
         revealBoard();
     }
     function revealBoard() {
-        $('.difficulty, .challenge').fadeOut(400).promise().done(function () {
+        $('.difficulty, .challenge').hide().promise().done(function () {
             $('.board, .keyboard').fadeIn(400);
         });
     }
@@ -113,6 +113,7 @@ $(document).ready(function () {
     function checkInput() {
         return userInput === wordle;
     }
+
     function checkResults() {
         let str = '';
         let count = 1;
@@ -210,15 +211,10 @@ $(document).ready(function () {
                     keyboardID.removeClass().addClass('green');
                     return;
                 }
-                if (keyboardID.is('.orange', '.green')) {
-                    keyboardID.removeClass('orange');
-                } else if (keyboardID.is('.grey', '.green')) {
-                    keyboardID.removeClass('green');
-                }
-                else if (keyboardID.is('.green') || keyboardID.is('.orange')) {
+                if (keyboardID.is('.green')) {
                     return;
                 }
-                keyboardID.addClass(id[i].classList[0]);
+                keyboardID.removeClass().addClass(id[i].classList[0]);
             });
             reveal = false;
         }, wordle.length * 500);
