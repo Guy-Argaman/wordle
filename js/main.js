@@ -1,6 +1,5 @@
 $(document).ready(function () {
     let wordle = '';
-    $('.board, .keyboard').hide();
     $('.generate-link').on('click', function (e) {
         e.preventDefault();
         $('.copy-link').text('Copy to Clipboard').removeClass('copied');
@@ -24,6 +23,7 @@ $(document).ready(function () {
     function revealBoard() {
         $('.difficulty, .challenge').fadeOut(400).promise().done(function () {
             $('.board, .keyboard').fadeIn(400);
+            $('.board').addClass('game-started');
         });
     }
     $('.difficulty li').on('click', function (e) {
@@ -141,7 +141,7 @@ $(document).ready(function () {
             $('.current li').addClass('green');
             checkKeyboard();
             checkResults();
-            setTimeout(function () { $('.board, .keyboard').fadeOut() }, 3000);
+            setTimeout(function () { $('.board, .keyboard').fadeOut().removeClass('game-started') }, 3000);
             popUp();
             gameOver = true;
         }

@@ -251,7 +251,11 @@ h2 {
 }
 
 .wordle .board {
+  display: none;
   position: relative;
+}
+
+.wordle .board.game-started {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -323,6 +327,7 @@ h2 {
 }
 
 .wordle .keyboard {
+  display: none;
   margin: auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;

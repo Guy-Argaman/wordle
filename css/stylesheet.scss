@@ -209,15 +209,18 @@ h2 {
         margin-top: -3.2rem;
     }
     .board {
+        display: none;
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: fit-content;
-        margin: 0 auto 1rem;
-        background: #e6e5e5;
-        padding: 2rem 4rem;
+        &.game-started {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: fit-content;
+            margin: 0 auto 1rem;
+            background: #e6e5e5;
+            padding: 2rem 4rem;
+        }
         @include mobile {
             width: 100%;
         }
@@ -247,6 +250,7 @@ h2 {
         }
     }
     .keyboard {
+        display: none;
         margin: auto;
         width: fit-content;
         border-radius: 27px;
