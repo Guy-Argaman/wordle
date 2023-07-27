@@ -104,7 +104,7 @@ $(document).ready(function () {
         filledTiles[filledTiles.length - 1].innerText = '';
         filledTiles.pop();
     });
-    
+
     let erasePressTimer;
     $('.erase').on('pointerdown', function (e) {
         // Check if the event is cancelable before calling preventDefault
@@ -122,7 +122,9 @@ $(document).ready(function () {
     $('.erase').on('pointerup', function () {
         clearTimeout(erasePressTimer);
     });
-
+    $('.erase').on('contextmenu', function (e) {
+        e.preventDefault();
+    });
     $(document).on('keydown', function (e) {
         if (reveal) { return; }
         let lettersEl = $('.letters-row li a');
