@@ -220,9 +220,9 @@ h2 {
             margin: 0 auto 1rem;
             background: #e6e5e5;
             padding: 2rem 4rem;
-        }
-        @include mobile {
-            width: 100%;
+            @include mobile {
+                width: 100%;
+            }
         }
         .row {
             display: flex;
@@ -251,7 +251,7 @@ h2 {
     }
     .keyboard {
         display: none;
-        margin: auto;
+        margin: 0 auto;
         width: fit-content;
         border-radius: 27px;
         background: darkgrey;
@@ -259,6 +259,7 @@ h2 {
         @include mobile {
             width: 100%;
             touch-action: manipulation;
+            margin: 0 auto 10rem;
         }
         .letters-row {
             display: flex;

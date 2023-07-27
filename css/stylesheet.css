@@ -278,7 +278,7 @@ h2 {
 }
 
 @media (max-width: 1023px) {
-  .wordle .board {
+  .wordle .board.game-started {
     width: 100%;
   }
 }
@@ -328,7 +328,7 @@ h2 {
 
 .wordle .keyboard {
   display: none;
-  margin: auto;
+  margin: 0 auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -342,6 +342,7 @@ h2 {
     width: 100%;
     -ms-touch-action: manipulation;
         touch-action: manipulation;
+    margin: 0 auto 10rem;
   }
 }
 
