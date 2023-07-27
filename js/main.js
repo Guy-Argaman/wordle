@@ -116,15 +116,18 @@ $(document).ready(function () {
             userInput = ''; // Clear the user input
             $('.current li').text(''); // Clear the filled tiles on the board
             filledTiles = []; // Clear the filled tiles array
-        }, 800); // Set the long-press duration here (800ms in this example)
+        }, 500); // Set the long-press duration here (800ms in this example)
     });
 
     $('.erase').on('pointerup', function () {
         clearTimeout(erasePressTimer);
     });
-    $('.erase').on('contextmenu', function (e) {
-        e.preventDefault();
-    });
+    $('.erase').oncontextmenu = function (event) {
+        event.preventDefault();
+        event.stopPropagation(); // not necessary in my case, could leave in case stopImmediateProp isn't available? 
+        event.stopImmediatePropagation();
+        return false;
+    };
     $(document).on('keydown', function (e) {
         if (reveal) { return; }
         let lettersEl = $('.letters-row li a');
