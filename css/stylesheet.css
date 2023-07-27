@@ -335,6 +335,8 @@ h2 {
 @media (max-width: 1023px) {
   .wordle .keyboard {
     width: 100%;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
   }
 }
 
@@ -376,6 +378,7 @@ h2 {
   .wordle .keyboard .letters-row li {
     width: 100%;
     height: 100%;
+    padding: 4rem 0;
   }
 }
 
@@ -391,7 +394,6 @@ h2 {
 
 @media (max-width: 1023px) {
   .wordle .keyboard .letters-row li a {
-    padding: 4rem 0;
     font-size: 6rem;
     text-align: center;
     margin: 0 auto;

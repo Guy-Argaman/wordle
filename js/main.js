@@ -41,6 +41,7 @@ $(document).ready(function () {
     let reveal = false;
     let userInput = '';
     let filledTiles = [];
+
     $('.letters-row li').on('click', function (e) {
         e.preventDefault();
         if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver || userInput.length === $('.current li').length) {
