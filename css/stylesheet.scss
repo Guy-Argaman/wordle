@@ -18,16 +18,19 @@ html {
     font-size: 10px;
     scroll-behavior: smooth;
     @media only screen and (min-width: 1024px) and (max-width: 1149px) {
-        font-size: 6px;
+        // font-size: 6px;
     }
     @media only screen and (min-width: 1150px) and (max-width: 1349px) {
-        font-size: 7px;
+        // font-size: 7px;
     }
     @media only screen and (min-width: 1350px) and (max-width: 1499px) {
-        font-size: 8px;
+        // font-size: 8px;
     }
     @media only screen and (min-width: 1500px) and (max-width: 1700px) {
         font-size: 9px;
+    }
+    @include mobile {
+        font-size: 10px;
     }
 }
 
@@ -180,7 +183,8 @@ h2 {
         font-family: Tahoma, Geneva, sans-serif;
         font-weight: bold;
         @include mobile {
-            font-size: 15rem;
+            font-size: 10rem;
+            width: 100%;
         }
         span {
             display: block;

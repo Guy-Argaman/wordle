@@ -8,27 +8,15 @@ html {
   scroll-behavior: smooth;
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1149px) {
-  html {
-    font-size: 6px;
-  }
-}
-
-@media only screen and (min-width: 1150px) and (max-width: 1349px) {
-  html {
-    font-size: 7px;
-  }
-}
-
-@media only screen and (min-width: 1350px) and (max-width: 1499px) {
-  html {
-    font-size: 8px;
-  }
-}
-
 @media only screen and (min-width: 1500px) and (max-width: 1700px) {
   html {
     font-size: 9px;
+  }
+}
+
+@media (max-width: 1023px) {
+  html {
+    font-size: 10px;
   }
 }
 
@@ -232,7 +220,8 @@ h2 {
 
 @media (max-width: 1023px) {
   .wordle h1 {
-    font-size: 15rem;
+    font-size: 10rem;
+    width: 100%;
   }
 }
 
