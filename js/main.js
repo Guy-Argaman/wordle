@@ -122,12 +122,7 @@ $(document).ready(function () {
     $('.erase').on('pointerup', function () {
         clearTimeout(erasePressTimer);
     });
-    $('.erase').oncontextmenu = function (event) {
-        event.preventDefault();
-        event.stopPropagation(); // not necessary in my case, could leave in case stopImmediateProp isn't available? 
-        event.stopImmediatePropagation();
-        return false;
-    };
+
     $(document).on('keydown', function (e) {
         if (reveal) { return; }
         let lettersEl = $('.letters-row li a');
