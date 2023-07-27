@@ -604,6 +604,7 @@ h2 {
   .pop-up,
   .incorrect-pop-up {
     font-size: 5rem;
+    width: 100%;
   }
 }
 

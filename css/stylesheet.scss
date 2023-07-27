@@ -441,6 +441,7 @@ h2 {
     margin: 0 auto;
     @include mobile {
         font-size: 5rem;
+        width: 100%;
     }
     &--status,
     &--wordle {
