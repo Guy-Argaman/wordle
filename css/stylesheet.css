@@ -164,7 +164,7 @@ h2 {
   color: #333;
   line-height: 4em;
   margin-bottom: 1em;
-  padding: 0 1em;
+  padding: 0 2rem;
   list-style: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -179,13 +179,14 @@ h2 {
 @media (max-width: 1023px) {
   .difficulty ul li {
     font-size: 3.5rem;
+    font-weight: 500;
+    text-align: center;
   }
 }
 
 @media (max-width: 1023px) {
   .difficulty ul li:last-child {
     grid-column: 2 span;
-    text-align: center;
   }
 }
 
@@ -205,6 +206,7 @@ h2 {
 @media (max-width: 1023px) {
   .wordle {
     padding: 0 2rem;
+    margin-top: 15rem;
   }
 }
 
@@ -314,7 +316,7 @@ h2 {
 
 @media (max-width: 1023px) {
   .wordle .board .row li {
-    width: 15rem;
+    width: 100%;
     height: 15rem;
     font-size: 14rem;
   }
@@ -351,6 +353,12 @@ h2 {
   padding: 0;
 }
 
+@media (max-width: 1023px) {
+  .wordle .keyboard .letters-row {
+    margin: 5rem 0;
+  }
+}
+
 .wordle .keyboard .letters-row li {
   border: 1px solid black;
   border-radius: 1rem;
@@ -368,7 +376,6 @@ h2 {
   .wordle .keyboard .letters-row li {
     width: 100%;
     height: 100%;
-    font-size: 4rem;
   }
 }
 
@@ -380,6 +387,15 @@ h2 {
   font-weight: 700;
   height: 100%;
   width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .wordle .keyboard .letters-row li a {
+    padding: 4rem 0;
+    font-size: 6rem;
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 .wordle .keyboard .letters-row li:hover {

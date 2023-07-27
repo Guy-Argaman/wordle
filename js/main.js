@@ -1,7 +1,8 @@
 $(document).ready(function () {
     let wordle = '';
     $('.board, .keyboard').hide();
-    $('.generate-link').on('click', function () {
+    $('.generate-link').on('click', function (e) {
+        e.preventDefault();
         $('.copy-link').text('Copy to Clipboard').removeClass('copied');
         let chosenWord = $('#word').val().toUpperCase();
         let currentURL = window.location.href;
@@ -25,7 +26,8 @@ $(document).ready(function () {
             $('.board, .keyboard').fadeIn(400);
         });
     }
-    $('.difficulty li').on('click', function () {
+    $('.difficulty li').on('click', function (e) {
+        e.preventDefault();
         if ($(this).hasClass('selected')) return;
         $(this).toggleClass('selected');
         revealBoard();
@@ -40,6 +42,7 @@ $(document).ready(function () {
     let userInput = '';
     let filledTiles = [];
     $('.letters-row li').on('click', function (e) {
+        e.preventDefault();
         if ($(this).hasClass('submit') || $(this).hasClass('erase') || gameOver || userInput.length === $('.current li').length) {
             return;
         }
@@ -84,7 +87,8 @@ $(document).ready(function () {
     function checkWord(arr, str) {
         return arr.filter(function (elem) { return elem == str }).length > 0;
     }
-    $('.submit').on('click', function () {
+    $('.submit').on('click', function (e) {
+        e.preventDefault();
         if (userInput.length === $('.current li').length && !gameOver && checkWord(fiveLetterWords, userInput)) {
             checkWin();
         } else {
@@ -246,7 +250,8 @@ $(document).ready(function () {
         });
     }
 
-    $('.copy-link').on('click', function () {
+    $('.copy-link').on('click', function (e) {
+        e.preventDefault();
         if ($(this).hasClass('copied')) return;
         var $temp = $('<TEXTAREA>');
         $('body').append($temp);
