@@ -2,16 +2,15 @@ $(document).ready(function () {
     let wordle = '';
     $('.board, .keyboard').hide();
     $('.generate-link').on('click', function () {
-        $('.copy-link').text('Copy to Clipboard').css('background-color', '');
+        $('.copy-link').text('Copy to Clipboard').removeClass('copied');
         let chosenWord = $('#word').val().toUpperCase();
         let currentURL = window.location.href;
-        if (chosenWord.length >= 3 && chosenWord.length <= 5) {
-            $('#link a').text(currentURL + '?=' + btoa(chosenWord));
-            $('.link-wrapper').fadeIn();
-        } else {
-            $('.challenge label').css('color', 'red');
-            setTimeout(function () { $('.challenge label').css('color', '') }, 500);
+        if (!isNaN(chosenWord) || chosenWord.length < 3 || chosenWord.length > 5) {
+            challengeLinkError();
+            return;
         }
+        $('#link a').text(currentURL + '?=' + btoa(chosenWord));
+        $('.link-wrapper').fadeIn();
     });
     if (window.location.href.includes('?=')) {
         let query = window.location.search;
@@ -27,10 +26,12 @@ $(document).ready(function () {
         });
     }
     $('.difficulty li').on('click', function () {
-        $(this).toggleClass('selected').css('pointer-events', 'none');
+        if ($(this).hasClass('selected')) return;
+        $(this).toggleClass('selected');
         revealBoard();
         setDifficulty($(this));
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
+        console.log(wordle);
     });
     let sound = new Audio('./sound/wow.wav');
     let soundLose = new Audio('./sound/lose.mp3');
@@ -87,7 +88,7 @@ $(document).ready(function () {
         if (userInput.length === $('.current li').length && !gameOver && checkWord(fiveLetterWords, userInput)) {
             checkWin();
         } else {
-            if (!$('.incorrect-pop-up').is(':visible')) {
+            if (!$('.incorrect-pop-up').hasClass('animate')) {
                 incorrectPopUp();
             }
         }
@@ -171,7 +172,7 @@ $(document).ready(function () {
             if ($('.row').last().hasClass('current')) {
                 gameOver = true;
                 $('.pop-up--status').text('You lose!');
-                $('.pop-up').css('position', 'absolute');
+                $('.pop-up').addClass('pos');
                 checkResults();
                 soundLose.play();
                 popUp();
@@ -200,8 +201,10 @@ $(document).ready(function () {
 
     function incorrectPopUp() {
         userInput ? $('.incorrect-pop-up').text(`${userInput} is not a valid word`) : $('.incorrect-pop-up').text('Please enter a word');
-        $('.incorrect-pop-up').fadeIn('fast');
-        $('.incorrect-pop-up').fadeOut(1500);
+        $('.incorrect-pop-up').addClass('animate').fadeIn(300);
+        setTimeout(function () {
+            $('.incorrect-pop-up').removeClass('animate')/* .fadeOut(300) */;
+        }, 1200);
     }
 
     function checkKeyboard() {
@@ -237,25 +240,34 @@ $(document).ready(function () {
     }
 
     function quickColor(el) {
-        $(el).css('background-color', 'saddlebrown');
+        $(el).addClass('saddlebrown');
         $(document).on('keyup', function () {
-            $(el).css('background-color', '');
+            $(el).removeClass('saddlebrown');
         });
     }
 
     $('.copy-link').on('click', function () {
+        if ($(this).hasClass('copied')) return;
         var $temp = $('<TEXTAREA>');
         $('body').append($temp);
         if ($(this).parent().hasClass('pop-up')) {
             $temp.val($('.pop-up--copy-result ul li').text()).select();
-            $('.pop-up .copy-link').text('Copied!').css('background-color', 'grey');
+            $('.pop-up .copy-link').text('Copied!').addClass('copied');
         } else {
             $temp.val($('#link a').text()).select();
-            $('.challenge .copy-link').text('Copied!').css('background-color', 'grey');
+            $('.challenge .copy-link').text('Copied!').addClass('copied');
         }
         document.execCommand('copy');
         $temp.remove();
+        setTimeout(() => {
+            $('.copy-link').removeClass('copied').text('Copy To Clipboard');
+        }, 700);
     });
+
+    function challengeLinkError() {
+        $('.challenge label').css('color', 'red');
+        setTimeout(function () { $('.challenge label').css('color', '') }, 500);
+    }
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);

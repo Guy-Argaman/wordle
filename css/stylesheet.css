@@ -36,7 +36,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Assistant;
-  font-size: 2rem;
+  font-size: 10px;
   font-weight: 400;
   background-color: #f7f7f7;
   color: #000000;
@@ -49,11 +49,52 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 1023px) {
+  .container {
+    width: 100%;
+  }
+}
+
+a.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 2rem;
+  line-height: 1;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 1rem 1.8rem;
+  color: #fff;
+  background-color: #1ed760;
+  -webkit-transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter, -webkit-transform;
+  transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter, -webkit-transform;
+  transition-property: background-color, border-color, color, box-shadow, filter, transform;
+  transition-property: background-color, border-color, color, box-shadow, filter, transform, -webkit-box-shadow, -webkit-filter, -webkit-transform;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+a.btn:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  background-color: #21e065;
+}
+
 button {
   display: inline-block;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 2.2rem;
   line-height: 1;
+  border: 2px solid green;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 1rem 1.8rem;
+  color: #fff;
+  background-color: #1ed760;
   border-radius: 50px;
   -webkit-transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
   transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
@@ -61,14 +102,40 @@ button {
   transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
-  border: 1px solid transparent;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 10px 18px;
-  color: #fff;
-  background-color: #1ed760;
   cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  button {
+    font-size: 5rem;
+    padding: 3rem 3.8rem;
+  }
+}
+
+button:hover, button:focus {
+  background-color: #fff;
+  color: green;
+}
+
+button.copied {
+  border-color: grey;
+  background-color: grey;
+}
+
+button.copied:hover, button.copied:focus {
+  border-color: grey;
+  background-color: grey;
+  color: #fff;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+@media (max-width: 1023px) {
+  h2 {
+    font-size: 5rem;
+  }
 }
 
 .difficulty {
@@ -93,8 +160,18 @@ button {
   margin: 0;
 }
 
+@media (max-width: 1023px) {
+  .difficulty ul {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .difficulty ul li {
   display: inline-block;
+  font-size: 2rem;
   background: #ddd;
   color: #333;
   line-height: 4em;
@@ -111,6 +188,19 @@ button {
   transition: background-color 0.5s;
 }
 
+@media (max-width: 1023px) {
+  .difficulty ul li {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .difficulty ul li:last-child {
+    grid-column: 2 span;
+    text-align: center;
+  }
+}
+
 .difficulty ul li:hover {
   background: green;
 }
@@ -120,13 +210,19 @@ button {
   text-decoration: none;
 }
 
-.wordle .type span {
-  display: block;
+.wordle {
+  margin-top: 5rem;
 }
 
-.wordle .type {
-  height: 100%;
-  margin: 50px auto;
+@media (max-width: 1023px) {
+  .wordle {
+    padding: 0 2rem;
+  }
+}
+
+.wordle h1 {
+  font-size: 10rem;
+  margin: 0 0 5rem 0;
   text-align: center;
   color: #f5c4b6;
   line-height: 0.85;
@@ -134,17 +230,23 @@ button {
   font-weight: bold;
 }
 
-.wordle .type span:nth-child(1) {
-  font-size: 100px;
+@media (max-width: 1023px) {
+  .wordle h1 {
+    font-size: 15rem;
+  }
+}
+
+.wordle h1 span {
+  display: block;
 }
 
 .wordle .type span:nth-child(2) {
   font-family: "Pacifico", cursive;
   font-weight: 400;
-  font-size: 70px;
+  font-size: 7rem;
   position: relative;
   z-index: 1;
-  text-shadow: 5px 0 0 #f94f6a, -5px 0 0 #f94f6a, 0 5px 0 #f94f6a, 0 -5px 0 #f94f6a, 4px 4px #f94f6a, -4px -4px 0 #f94f6a, 4px -4px 0 #f94f6a, -4px 4px 0 #f94f6a;
+  text-shadow: 5px 0 0 #f94f6a, -5px 0 0 #f94f6a, 0 5px 0 #f94f6a, 0 -5px 0 #f94f6a, 4px 4px #f94f6a, -4px -4px 0 #f94f6a, 4px -4px 0 #f94f6a, -4px 4px 0 #f94f6a;
   -webkit-transform: rotate(-3deg);
           transform: rotate(-3deg);
   -webkit-transform-origin: 0 0;
@@ -154,8 +256,7 @@ button {
 }
 
 .wordle .type span:nth-child(3) {
-  font-size: 100px;
-  margin-top: -32px;
+  margin-top: -3.2rem;
 }
 
 .wordle .board {
@@ -181,6 +282,12 @@ button {
   padding: 2rem 4rem;
 }
 
+@media (max-width: 1023px) {
+  .wordle .board {
+    width: 100%;
+  }
+}
+
 .wordle .board .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -192,6 +299,12 @@ button {
   gap: 1rem;
   padding: 0;
   margin: 1rem 0;
+}
+
+@media (max-width: 1023px) {
+  .wordle .board .row {
+    width: 100%;
+  }
 }
 
 .wordle .board .row li {
@@ -210,6 +323,14 @@ button {
   font-size: 6rem;
 }
 
+@media (max-width: 1023px) {
+  .wordle .board .row li {
+    width: 15rem;
+    height: 15rem;
+    font-size: 14rem;
+  }
+}
+
 .wordle .keyboard {
   margin: auto;
   width: -webkit-fit-content;
@@ -218,6 +339,12 @@ button {
   border-radius: 27px;
   background: darkgrey;
   padding: 1rem 2rem;
+}
+
+@media (max-width: 1023px) {
+  .wordle .keyboard {
+    width: 100%;
+  }
 }
 
 .wordle .keyboard .letters-row {
@@ -242,10 +369,18 @@ button {
   height: 7.5rem;
   width: 7.5rem;
   list-style: none;
-  cursor: pointer;
   font-size: 5.5rem;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  .wordle .keyboard .letters-row li {
+    width: 100%;
+    height: 100%;
+    font-size: 4rem;
+  }
 }
 
 .wordle .keyboard .letters-row li a {
@@ -278,24 +413,91 @@ button {
 }
 
 .challenge {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto;
   text-align: center;
 }
 
-.challenge label {
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
+@media (max-width: 1023px) {
+  .challenge {
+    padding: 0 2rem;
+  }
+}
+
+.challenge h2 {
+  color: green;
 }
 
 .challenge .buttons-wrapper {
-  padding: 2rem 0 0 0;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1023px) {
+  .challenge .buttons-wrapper {
+    margin-top: 5rem;
+  }
 }
 
 .challenge .link-wrapper {
   display: none;
+}
+
+.challenge .inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .challenge .inputs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.challenge .inputs label {
+  font-size: 2.2rem;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+@media (max-width: 1023px) {
+  .challenge .inputs label {
+    font-size: 4rem;
+  }
+}
+
+.challenge .inputs input#word {
+  padding: 1rem;
+  font-size: 1.8rem;
+  border: 1px solid #3498db;
+  border-radius: 5px;
+  -webkit-transition: border-color 0.3s ease, -webkit-box-shadow 0.2s linear;
+  transition: border-color 0.3s ease, -webkit-box-shadow 0.2s linear;
+  transition: border-color 0.3s ease, box-shadow 0.2s linear;
+  transition: border-color 0.3s ease, box-shadow 0.2s linear, -webkit-box-shadow 0.2s linear;
+}
+
+@media (max-width: 1023px) {
+  .challenge .inputs input#word {
+    height: 10rem;
+    width: 50%;
+  }
+}
+
+.challenge .inputs input#word:hover, .challenge .inputs input#word:focus {
+  outline: 0;
+  border-color: #1abc9c;
+  -webkit-box-shadow: 0 0 5px #1abc9c;
+          box-shadow: 0 0 5px #1abc9c;
 }
 
 .green {
@@ -308,6 +510,10 @@ button {
 
 .grey {
   background: grey !important;
+}
+
+.saddlebrown {
+  background-color: saddlebrown !important;
 }
 
 .default {
@@ -334,6 +540,8 @@ button {
 
 .pop-up--copy-result li {
   list-style: none;
+  font-size: 2rem;
+  letter-spacing: 7px;
   font-weight: 900;
 }
 
@@ -347,7 +555,20 @@ button {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  font-size: 2.4rem;
   margin: 10% auto;
+}
+
+@media (max-width: 1023px) {
+  .pop-up,
+  .incorrect-pop-up {
+    font-size: 5rem;
+  }
+}
+
+.pop-up.pos,
+.incorrect-pop-up.pos {
+  position: absolute;
 }
 
 .pop-up--status, .pop-up--wordle,
@@ -381,49 +602,26 @@ button {
   border: 1px solid black;
 }
 
-.pop-up--button a,
-.incorrect-pop-up--button a {
-  display: inline-block;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 50px;
-  -webkit-transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
-  transition-property: background-color, border-color, color, -webkit-box-shadow, -webkit-filter;
-  transition-property: background-color, border-color, color, box-shadow, filter;
-  transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-  border: 1px solid transparent;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 10px 18px;
-  color: #fff;
-  background-color: #1ed760;
-  cursor: pointer;
-}
-
-.pop-up--button a:hover,
-.incorrect-pop-up--button a:hover {
-  -webkit-transform: scale(1.04);
-          transform: scale(1.04);
-  background-color: #21e065;
-}
-
 .incorrect-pop-up {
+  display: block;
   position: absolute;
   color: #d8000c;
   background-color: #ffbaba;
   margin: 0;
   padding: 0.5rem 1.5rem;
-  top: -4rem;
-  -webkit-animation: down 0.5s ease-in-out forwards;
-          animation: down 0.5s ease-in-out forwards;
+  -webkit-transform: translate(0, -32rem);
+          transform: translate(0, -32rem);
+  -webkit-transition: opacity 0.5s linear, -webkit-transform 0.5s linear;
+  transition: opacity 0.5s linear, -webkit-transform 0.5s linear;
+  transition: transform 0.5s linear, opacity 0.5s linear;
+  transition: transform 0.5s linear, opacity 0.5s linear, -webkit-transform 0.5s linear;
+  opacity: 0;
 }
 
-.incorrect-pop-up--message {
-  font-size: 2.5rem;
+.incorrect-pop-up.animate {
+  -webkit-transform: translate(0, 50%);
+          transform: translate(0, 50%);
+  opacity: 1;
 }
 
 @-webkit-keyframes flip {
@@ -453,24 +651,6 @@ button {
   100% {
     -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg);
-  }
-}
-
-@-webkit-keyframes down {
-  0% {
-    top: -4rem;
-  }
-  100% {
-    top: 27rem;
-  }
-}
-
-@keyframes down {
-  0% {
-    top: -4rem;
-  }
-  100% {
-    top: 27rem;
   }
 }
 /*# sourceMappingURL=stylesheet.css.map */
