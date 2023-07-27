@@ -607,19 +607,6 @@ h2 {
   }
 }
 
-.pop-up.pos,
-.incorrect-pop-up.pos {
-  position: absolute;
-}
-
-@media (max-width: 1023px) {
-  .pop-up.pos,
-  .incorrect-pop-up.pos {
-    position: unset;
-    width: 100%;
-  }
-}
-
 .pop-up--status, .pop-up--wordle,
 .incorrect-pop-up--status,
 .incorrect-pop-up--wordle {

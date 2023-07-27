@@ -442,13 +442,6 @@ h2 {
     @include mobile {
         font-size: 5rem;
     }
-    &.pos {
-        position: absolute;
-        @include mobile {
-            position: unset;
-            width: 100%;
-        }
-    }
     &--status,
     &--wordle {
         text-align: center;
@@ -503,12 +496,6 @@ h2 {
             transform: translate(0, 60rem);
         }
     }
-    // &--message {
-    //     font-size: 2.5rem;
-    //     @include mobile {
-    //         font-size: 4.5rem;
-    //     }
-    // }
 }
 
 @keyframes flip {

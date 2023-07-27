@@ -33,7 +33,6 @@ $(document).ready(function () {
         revealBoard();
         setDifficulty($(this));
         wordle = fiveLetterWords[getRandomInt(0, fiveLetterWords.length - 1)].toUpperCase();
-        console.log(wordle);
     });
     let sound = new Audio('./sound/wow.wav');
     let soundLose = new Audio('./sound/lose.mp3');
@@ -41,6 +40,7 @@ $(document).ready(function () {
     let reveal = false;
     let userInput = '';
     let filledTiles = [];
+    let gameLost = false;
 
     $('.letters-row li').on('click', function (e) {
         e.preventDefault();
@@ -141,7 +141,6 @@ $(document).ready(function () {
             $('.current li').addClass('green');
             checkKeyboard();
             checkResults();
-            setTimeout(function () { $('.board, .keyboard').fadeOut().removeClass('game-started') }, 3000);
             popUp();
             gameOver = true;
         }
@@ -177,11 +176,9 @@ $(document).ready(function () {
             if ($('.row').last().hasClass('current')) {
                 gameOver = true;
                 $('.pop-up--status').text('You lose!');
-                $('.pop-up').addClass('pos');
                 checkResults();
-                soundLose.play();
+                gameLost = true;
                 popUp();
-                $('.keyboard').fadeOut(300);
             }
             checkKeyboard();
             let current = $('.current');
@@ -194,12 +191,17 @@ $(document).ready(function () {
 
     function popUp() {
         setTimeout(function () {
-            $('.pop-up').fadeIn('fast');
+            $('.board, .keyboard').fadeOut(300);
+        }, 3000);
+        setTimeout(function () {
+            $('.pop-up').fadeIn(300);
             $('.pop-up--wordle span').text('The word was ');
             $('.pop-up--wordle strong').text(wordle);
-            if ($('.pop-up--status').text().includes('win')) {
+            if (gameLost) {
+                soundLose.play();
+            } else {
                 sound.play();
-                const jsConfetti = new JSConfetti()
+                const jsConfetti = new JSConfetti();
                 jsConfetti.addConfetti();
             }
         }, 3600);
@@ -209,7 +211,7 @@ $(document).ready(function () {
         userInput ? $('.incorrect-pop-up').text(`${userInput} is not a valid word`) : $('.incorrect-pop-up').text('Please enter a word');
         $('.incorrect-pop-up').addClass('animate').fadeIn(300);
         setTimeout(function () {
-            $('.incorrect-pop-up').removeClass('animate')/* .fadeOut(300) */;
+            $('.incorrect-pop-up').removeClass('animate');
         }, 1200);
     }
 
