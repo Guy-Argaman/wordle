@@ -181,6 +181,7 @@ $(document).ready(function () {
                 checkResults();
                 soundLose.play();
                 popUp();
+                $('.keyboard').fadeOut(300);
             }
             checkKeyboard();
             let current = $('.current');
