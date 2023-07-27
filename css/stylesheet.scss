@@ -80,6 +80,10 @@ a.btn {
         transform: scale(1.04);
         background-color: #21e065;
     }
+    @include mobile {
+        font-size: 5rem;
+        padding: 3rem 3.8rem;
+    }
 }
 button {
     display: inline-block;
@@ -336,6 +340,13 @@ h2 {
     }
     .link-wrapper {
         display: none;
+        #link a {
+            @include mobile {
+                display: inline-block;
+                font-size: 5rem;
+                width: 100%;
+            }
+        }
     }
     .inputs {
         display: flex;
@@ -362,6 +373,7 @@ h2 {
             @include mobile {
                 height: 10rem;
                 width: 50%;
+                font-size: 5rem;
             }
             &:hover,
             &:focus {
@@ -398,6 +410,9 @@ h2 {
 .pop-up {
     left: -10rem;
     &--copy-result {
+        @include mobile {
+            margin: 2rem 0;
+        }
         ul {
             padding: 2rem 0;
             margin: 0;
@@ -407,6 +422,9 @@ h2 {
             font-size: 2rem;
             letter-spacing: 7px;
             font-weight: 900;
+            @include mobile {
+                font-size: 6rem;
+            }
         }
     }
 }
@@ -420,12 +438,16 @@ h2 {
     border-radius: 0.5em;
     width: fit-content;
     font-size: 2.4rem;
-    margin: 10% auto;
+    margin: 0 auto;
     @include mobile {
         font-size: 5rem;
     }
     &.pos {
         position: absolute;
+        @include mobile {
+            position: unset;
+            width: 100%;
+        }
     }
     &--status,
     &--wordle {
@@ -436,10 +458,16 @@ h2 {
     &--status {
         font-size: 3rem;
         font-weight: 600;
+        @include mobile {
+            font-size: 10rem;
+        }
     }
     &--wordle {
         font-size: 2.5rem;
         padding: 0 0 2rem 0;
+        @include mobile {
+            font-size: 7.5rem;
+        }
         strong {
             color: #4af026;
             background-color: #0c6abd73;
@@ -448,6 +476,9 @@ h2 {
             font-size: 3.5rem;
             border-radius: 12px;
             border: 1px solid black;
+            @include mobile {
+                font-size: 8.5rem;
+            }
         }
     }
 }
@@ -455,16 +486,22 @@ h2 {
 .incorrect-pop-up {
     display: block;
     position: absolute;
+    top: -4rem;
+    left: 0;
+    width: 100%;
     color: #d8000c;
     background-color: #ffbaba;
     margin: 0;
     padding: 0.5rem 1.5rem;
-    transform: translate(0, -32rem);
+    transform: translate(0);
     transition: transform 0.5s linear, opacity 0.5s linear;
     opacity: 0;
     &.animate {
-        transform: translate(0, 50%);
+        transform: translate(0, 30rem);
         opacity: 1;
+        @include mobile {
+            transform: translate(0, 60rem);
+        }
     }
     // &--message {
     //     font-size: 2.5rem;

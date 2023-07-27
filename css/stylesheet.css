@@ -71,6 +71,13 @@ a.btn:hover {
   background-color: #21e065;
 }
 
+@media (max-width: 1023px) {
+  a.btn {
+    font-size: 5rem;
+    padding: 3rem 3.8rem;
+  }
+}
+
 button {
   display: inline-block;
   text-decoration: none;
@@ -453,6 +460,14 @@ h2 {
   display: none;
 }
 
+@media (max-width: 1023px) {
+  .challenge .link-wrapper #link a {
+    display: inline-block;
+    font-size: 5rem;
+    width: 100%;
+  }
+}
+
 .challenge .inputs {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -503,6 +518,7 @@ h2 {
   .challenge .inputs input#word {
     height: 10rem;
     width: 50%;
+    font-size: 5rem;
   }
 }
 
@@ -546,6 +562,12 @@ h2 {
   left: -10rem;
 }
 
+@media (max-width: 1023px) {
+  .pop-up--copy-result {
+    margin: 2rem 0;
+  }
+}
+
 .pop-up--copy-result ul {
   padding: 2rem 0;
   margin: 0;
@@ -556,6 +578,12 @@ h2 {
   font-size: 2rem;
   letter-spacing: 7px;
   font-weight: 900;
+}
+
+@media (max-width: 1023px) {
+  .pop-up--copy-result li {
+    font-size: 6rem;
+  }
 }
 
 .pop-up,
@@ -569,7 +597,7 @@ h2 {
   width: -moz-fit-content;
   width: fit-content;
   font-size: 2.4rem;
-  margin: 10% auto;
+  margin: 0 auto;
 }
 
 @media (max-width: 1023px) {
@@ -582,6 +610,14 @@ h2 {
 .pop-up.pos,
 .incorrect-pop-up.pos {
   position: absolute;
+}
+
+@media (max-width: 1023px) {
+  .pop-up.pos,
+  .incorrect-pop-up.pos {
+    position: unset;
+    width: 100%;
+  }
 }
 
 .pop-up--status, .pop-up--wordle,
@@ -598,10 +634,24 @@ h2 {
   font-weight: 600;
 }
 
+@media (max-width: 1023px) {
+  .pop-up--status,
+  .incorrect-pop-up--status {
+    font-size: 10rem;
+  }
+}
+
 .pop-up--wordle,
 .incorrect-pop-up--wordle {
   font-size: 2.5rem;
   padding: 0 0 2rem 0;
+}
+
+@media (max-width: 1023px) {
+  .pop-up--wordle,
+  .incorrect-pop-up--wordle {
+    font-size: 7.5rem;
+  }
 }
 
 .pop-up--wordle strong,
@@ -615,15 +665,25 @@ h2 {
   border: 1px solid black;
 }
 
+@media (max-width: 1023px) {
+  .pop-up--wordle strong,
+  .incorrect-pop-up--wordle strong {
+    font-size: 8.5rem;
+  }
+}
+
 .incorrect-pop-up {
   display: block;
   position: absolute;
+  top: -4rem;
+  left: 0;
+  width: 100%;
   color: #d8000c;
   background-color: #ffbaba;
   margin: 0;
   padding: 0.5rem 1.5rem;
-  -webkit-transform: translate(0, -32rem);
-          transform: translate(0, -32rem);
+  -webkit-transform: translate(0);
+          transform: translate(0);
   -webkit-transition: opacity 0.5s linear, -webkit-transform 0.5s linear;
   transition: opacity 0.5s linear, -webkit-transform 0.5s linear;
   transition: transform 0.5s linear, opacity 0.5s linear;
@@ -632,9 +692,16 @@ h2 {
 }
 
 .incorrect-pop-up.animate {
-  -webkit-transform: translate(0, 50%);
-          transform: translate(0, 50%);
+  -webkit-transform: translate(0, 30rem);
+          transform: translate(0, 30rem);
   opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .incorrect-pop-up.animate {
+    -webkit-transform: translate(0, 60rem);
+            transform: translate(0, 60rem);
+  }
 }
 
 @-webkit-keyframes flip {

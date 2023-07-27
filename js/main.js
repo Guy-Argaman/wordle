@@ -28,7 +28,7 @@ $(document).ready(function () {
     }
     $('.difficulty li').on('click', function (e) {
         e.preventDefault();
-        if ($(this).hasClass('selected')) return;
+        if ($('.difficulty li').hasClass('selected')) return;
         $(this).toggleClass('selected');
         revealBoard();
         setDifficulty($(this));
