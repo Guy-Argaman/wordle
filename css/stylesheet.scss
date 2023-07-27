@@ -34,12 +34,6 @@ html {
     }
 }
 
-@mixin anim($name, $dur, $iterate) {
-    animation-name: $name;
-    animation-duration: $dur;
-    animation-iteration-count: $iterate;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -436,10 +430,9 @@ h2 {
     padding: 3rem 2rem;
     text-align: center;
     border-radius: 0.5em;
-    width: fit-content;
+    width: 36rem;
     font-size: 2.4rem;
     margin: 0 auto;
-    width: 36rem;
     @include mobile {
         font-size: 5rem;
         width: 100%;
