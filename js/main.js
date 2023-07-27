@@ -104,6 +104,25 @@ $(document).ready(function () {
         filledTiles[filledTiles.length - 1].innerText = '';
         filledTiles.pop();
     });
+    
+    let erasePressTimer;
+    $('.erase').on('pointerdown', function (e) {
+        // Check if the event is cancelable before calling preventDefault
+        if (e.cancelable) {
+            e.preventDefault();
+        }
+        erasePressTimer = setTimeout(function () {
+            erasePressTimer = null;
+            userInput = ''; // Clear the user input
+            $('.current li').text(''); // Clear the filled tiles on the board
+            filledTiles = []; // Clear the filled tiles array
+        }, 800); // Set the long-press duration here (800ms in this example)
+    });
+
+    $('.erase').on('pointerup', function () {
+        clearTimeout(erasePressTimer);
+    });
+
     $(document).on('keydown', function (e) {
         if (reveal) { return; }
         let lettersEl = $('.letters-row li a');
